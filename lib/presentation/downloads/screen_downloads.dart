@@ -21,7 +21,7 @@ class ScreenDownloads extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         itemBuilder: (context, index) => _widgetList[index],
         separatorBuilder: (context, index) => const SizedBox(
-          height: 18,
+          height: 19,
         ),
         itemCount: _widgetList.length,
       ),
@@ -34,18 +34,20 @@ class _SmartDownloads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        kwidth,
-        Icon(
-          Icons.settings,
-          color: kwhite,
-        ),
-        kwidth,
-        Text(
-          "Smart Downloads",
-        )
-      ],
+    return const Padding(
+      padding: EdgeInsets.only(top: 10),
+      child: Row(
+        children: [
+          Icon(
+            Icons.settings,
+            color: kwhite,
+          ),
+          kwidth,
+          Text(
+            "Smart Downloads",
+          )
+        ],
+      ),
     );
   }
 }
@@ -168,7 +170,7 @@ class Section3 extends StatelessWidget {
                   "Set Up",
                   style: TextStyle(
                       color: kButtonColorWhite,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
