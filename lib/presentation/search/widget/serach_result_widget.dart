@@ -24,7 +24,7 @@ class SearchResultWidget extends StatelessWidget {
               crossAxisSpacing: 8,
               shrinkWrap: true,
               children: List.generate(20, (index) {
-                return MainCard();
+                return const MainCardSearch();
               })),
         )
       ],
@@ -32,15 +32,15 @@ class SearchResultWidget extends StatelessWidget {
   }
 }
 
-class MainCard extends StatelessWidget {
-  const MainCard({super.key});
+class MainCardSearch extends StatelessWidget {
+  const MainCardSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image:
-              DecorationImage(fit: BoxFit.cover, image: NetworkImage(imageUrl)),
+          image: const DecorationImage(
+              fit: BoxFit.cover, image: NetworkImage(imageUrl)),
           borderRadius: BorderRadius.circular(8)),
     );
   }

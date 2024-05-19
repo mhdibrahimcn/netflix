@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.3.1 <4.0.0'
 
 dependencies:
+  bordered_text: ^2.0.0
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
