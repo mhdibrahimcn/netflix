@@ -6,15 +6,14 @@ import 'package:netflix/presentation/widgets/main_title.dart';
 class MainTitleCard extends StatelessWidget {
   const MainTitleCard({
     super.key,
-    required this.size,
     required this.title,
   });
 
-  final Size size;
   final String title;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -25,6 +24,7 @@ class MainTitleCard extends StatelessWidget {
           LimitedBox(
               maxHeight: size.height * 0.24,
               child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => MainCard(size: size),
                   separatorBuilder: (context, index) => kwidth,
