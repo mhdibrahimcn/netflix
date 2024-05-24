@@ -20,7 +20,7 @@ final BorderRadius kRadius30 = BorderRadius.circular(30);
 //images
 
 const String kMainimage =
-    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2YJ0DDtboQo9gioEIbe28lj640q.jpg";
+    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5weKu49pzJCt06OPpjvT80efnQj.jpg";
 
 //home text style
 

@@ -18,10 +18,9 @@ class AppBarWidget extends StatelessWidget {
           size: 25,
         ),
         kwidth,
-        Container(
-          width: 25,
-          height: 25,
-          color: Colors.blue,
+        CircleAvatar(
+          radius: 20,
+          child: Icon(Icons.person),
         ),
         kwidth
       ],

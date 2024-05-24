@@ -6,9 +6,9 @@ import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
 
 class BackgroundCard extends StatelessWidget {
   const BackgroundCard({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   final Size size;
 
@@ -18,11 +18,11 @@ class BackgroundCard extends StatelessWidget {
       children: [
         // Background image
         Padding(
-          padding: const EdgeInsets.only(top: 30, bottom: 10),
+          padding: const EdgeInsets.only(top: 40, bottom: 10),
           child: Container(
             width: double.infinity,
             height: size.height * 0.73,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(kMainimage),
               ),
@@ -59,29 +59,27 @@ class BackgroundCard extends StatelessWidget {
           left: 0,
           right: 0,
           child: Container(
-            height: size.height * 0.07, // Adjust the height as needed
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.2),
-                ],
+            width: double.infinity,
+            height: size.height * 0.1, // Adjust the height as needed
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(kMainimage),
+                fit: BoxFit.none, // Do not scale the image
+                alignment: Alignment(-1, -1),
               ),
             ),
             child: ClipRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                 child: Container(
-                  color: Colors.transparent,
+                  color: Colors.black.withOpacity(0.3),
                 ),
               ),
             ),
           ),
         ),
         // Positioned buttons
-        Positioned(
+        const Positioned(
           bottom: 0,
           left: 0,
           right: 0,
