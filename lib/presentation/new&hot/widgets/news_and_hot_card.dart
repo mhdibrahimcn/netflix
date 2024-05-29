@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
+import 'package:netflix/presentation/new&hot/widgets/title_and_description_widget.dart';
+import 'package:netflix/presentation/new&hot/widgets/video_widget.dart';
 
 class NewsAndHotCard extends StatelessWidget {
   const NewsAndHotCard({
@@ -39,15 +43,7 @@ class NewsAndHotCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: size.width,
-                  height: size.height * 0.23,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              "https://media.themoviedb.org/t/p/w533_and_h300_bestv2/IYUD7rAIXzBM91TT3Z5fILUS7n.jpg"))),
-                ),
+                VideoWidget(),
                 kheight,
                 const Row(
                   children: [
@@ -82,18 +78,7 @@ class NewsAndHotCard extends StatelessWidget {
                       fontWeight: FontWeight.w900, color: Colors.grey[300]),
                 ),
                 kheight,
-                Text(
-                  "The Batman",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                Text(
-                  "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey[400]),
-                )
+                TitleAndDescrptionWidget(),
               ],
             ),
           )

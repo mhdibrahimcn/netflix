@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:netflix/core/colors/colors.dart';
-import 'package:netflix/core/constants.dart';
-import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
+
+import 'package:netflix/presentation/new&hot/widgets/everyoes_watching_card.dart';
 import 'package:netflix/presentation/new&hot/widgets/news_and_hot_card.dart';
+
 import 'package:netflix/presentation/widgets/app_bar_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
@@ -59,10 +58,12 @@ class ScreenNewAndHot extends StatelessWidget {
 
   Widget _buidComingSoon(BuildContext context) {
     return ListView.builder(
-        itemBuilder: (context, index) => NewsAndHotCard(), itemCount: 10);
+        itemBuilder: (context, index) => const NewsAndHotCard(), itemCount: 10);
   }
 
   Widget _buildEveryoneisWatching() {
-    return const Text("hi");
+    return ListView.builder(
+        itemBuilder: (context, index) => const EveryonesWatchingCard(),
+        itemCount: 10);
   }
 }
