@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'main_faliure.dart';
+part of 'main_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -37,20 +37,20 @@ mixin _$MainFaliure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClientFaliure value) clientFaliure,
-    required TResult Function(_ServerFaliure value) serverFaliure,
+    required TResult Function(_ClientFailure value) clientFaliure,
+    required TResult Function(_ServerFailure value) serverFaliure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClientFaliure value)? clientFaliure,
-    TResult? Function(_ServerFaliure value)? serverFaliure,
+    TResult? Function(_ClientFailure value)? clientFaliure,
+    TResult? Function(_ServerFailure value)? serverFaliure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClientFaliure value)? clientFaliure,
-    TResult Function(_ServerFaliure value)? serverFaliure,
+    TResult Function(_ClientFailure value)? clientFaliure,
+    TResult Function(_ServerFailure value)? serverFaliure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,12 +59,12 @@ mixin _$MainFaliure {
 /// @nodoc
 abstract class $MainFaliureCopyWith<$Res> {
   factory $MainFaliureCopyWith(
-          MainFaliure value, $Res Function(MainFaliure) then) =
-      _$MainFaliureCopyWithImpl<$Res, MainFaliure>;
+          MainFailure value, $Res Function(MainFailure) then) =
+      _$MainFaliureCopyWithImpl<$Res, MainFailure>;
 }
 
 /// @nodoc
-class _$MainFaliureCopyWithImpl<$Res, $Val extends MainFaliure>
+class _$MainFaliureCopyWithImpl<$Res, $Val extends MainFailure>
     implements $MainFaliureCopyWith<$Res> {
   _$MainFaliureCopyWithImpl(this._value, this._then);
 
@@ -92,7 +92,7 @@ class __$$ClientFaliureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ClientFaliureImpl implements _ClientFaliure {
+class _$ClientFaliureImpl implements _ClientFailure {
   const _$ClientFaliureImpl();
 
   @override
@@ -143,8 +143,8 @@ class _$ClientFaliureImpl implements _ClientFaliure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClientFaliure value) clientFaliure,
-    required TResult Function(_ServerFaliure value) serverFaliure,
+    required TResult Function(_ClientFailure value) clientFaliure,
+    required TResult Function(_ServerFailure value) serverFaliure,
   }) {
     return clientFaliure(this);
   }
@@ -152,8 +152,8 @@ class _$ClientFaliureImpl implements _ClientFaliure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClientFaliure value)? clientFaliure,
-    TResult? Function(_ServerFaliure value)? serverFaliure,
+    TResult? Function(_ClientFailure value)? clientFaliure,
+    TResult? Function(_ServerFailure value)? serverFaliure,
   }) {
     return clientFaliure?.call(this);
   }
@@ -161,8 +161,8 @@ class _$ClientFaliureImpl implements _ClientFaliure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClientFaliure value)? clientFaliure,
-    TResult Function(_ServerFaliure value)? serverFaliure,
+    TResult Function(_ClientFailure value)? clientFaliure,
+    TResult Function(_ServerFailure value)? serverFaliure,
     required TResult orElse(),
   }) {
     if (clientFaliure != null) {
@@ -172,8 +172,8 @@ class _$ClientFaliureImpl implements _ClientFaliure {
   }
 }
 
-abstract class _ClientFaliure implements MainFaliure {
-  const factory _ClientFaliure() = _$ClientFaliureImpl;
+abstract class _ClientFailure implements MainFailure {
+  const factory _ClientFailure() = _$ClientFaliureImpl;
 }
 
 /// @nodoc
@@ -194,7 +194,7 @@ class __$$ServerFaliureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ServerFaliureImpl implements _ServerFaliure {
+class _$ServerFaliureImpl implements _ServerFailure {
   const _$ServerFaliureImpl();
 
   @override
@@ -245,8 +245,8 @@ class _$ServerFaliureImpl implements _ServerFaliure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClientFaliure value) clientFaliure,
-    required TResult Function(_ServerFaliure value) serverFaliure,
+    required TResult Function(_ClientFailure value) clientFaliure,
+    required TResult Function(_ServerFailure value) serverFaliure,
   }) {
     return serverFaliure(this);
   }
@@ -254,8 +254,8 @@ class _$ServerFaliureImpl implements _ServerFaliure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClientFaliure value)? clientFaliure,
-    TResult? Function(_ServerFaliure value)? serverFaliure,
+    TResult? Function(_ClientFailure value)? clientFaliure,
+    TResult? Function(_ServerFailure value)? serverFaliure,
   }) {
     return serverFaliure?.call(this);
   }
@@ -263,8 +263,8 @@ class _$ServerFaliureImpl implements _ServerFaliure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClientFaliure value)? clientFaliure,
-    TResult Function(_ServerFaliure value)? serverFaliure,
+    TResult Function(_ClientFailure value)? clientFaliure,
+    TResult Function(_ServerFailure value)? serverFaliure,
     required TResult orElse(),
   }) {
     if (serverFaliure != null) {
@@ -274,6 +274,6 @@ class _$ServerFaliureImpl implements _ServerFaliure {
   }
 }
 
-abstract class _ServerFaliure implements MainFaliure {
-  const factory _ServerFaliure() = _$ServerFaliureImpl;
+abstract class _ServerFailure implements MainFailure {
+  const factory _ServerFailure() = _$ServerFaliureImpl;
 }
