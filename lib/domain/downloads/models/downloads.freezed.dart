@@ -20,7 +20,7 @@ Downloads _$DownloadsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Downloads {
-  @JsonKey(name: "poster_path ")
+  @JsonKey(name: "backdrop_path")
   String? get posterPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $DownloadsCopyWith<$Res> {
   factory $DownloadsCopyWith(Downloads value, $Res Function(Downloads) then) =
       _$DownloadsCopyWithImpl<$Res, Downloads>;
   @useResult
-  $Res call({@JsonKey(name: "poster_path ") String? posterPath});
+  $Res call({@JsonKey(name: "backdrop_path") String? posterPath});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ abstract class _$$DownloadsImplCopyWith<$Res>
       __$$DownloadsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "poster_path ") String? posterPath});
+  $Res call({@JsonKey(name: "backdrop_path") String? posterPath});
 }
 
 /// @nodoc
@@ -98,13 +98,13 @@ class __$$DownloadsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DownloadsImpl implements _Downloads {
   const _$DownloadsImpl(
-      {@JsonKey(name: "poster_path ") required this.posterPath});
+      {@JsonKey(name: "backdrop_path") required this.posterPath});
 
   factory _$DownloadsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DownloadsImplFromJson(json);
 
   @override
-  @JsonKey(name: "poster_path ")
+  @JsonKey(name: "backdrop_path")
   final String? posterPath;
 
   @override
@@ -141,14 +141,14 @@ class _$DownloadsImpl implements _Downloads {
 
 abstract class _Downloads implements Downloads {
   const factory _Downloads(
-          {@JsonKey(name: "poster_path ") required final String? posterPath}) =
+          {@JsonKey(name: "backdrop_path") required final String? posterPath}) =
       _$DownloadsImpl;
 
   factory _Downloads.fromJson(Map<String, dynamic> json) =
       _$DownloadsImpl.fromJson;
 
   @override
-  @JsonKey(name: "poster_path ")
+  @JsonKey(name: "backdrop_path")
   String? get posterPath;
   @override
   @JsonKey(ignore: true)
