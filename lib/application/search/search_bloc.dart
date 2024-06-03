@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -15,32 +17,74 @@ part 'search_bloc.freezed.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final IDownloadsRepo _downloadService;
   final SearchService _searchService;
+
   SearchBloc(this._downloadService, this._searchService)
       : super(SearchState.initial()) {
-    //idle state
+    // idle state
     on<Initialize>((event, emit) async {
-      //initially
+      // if list exists
+      if (state.idleList.isNotEmpty) {
+        emit(state.copyWith(
+          isLoading: false,
+          isError: false,
+          idleList: state.idleList,
+          searchResultList: [],
+        ));
+        return;
+      }
+      // initially
       emit(state.copyWith(
-          isLoading: true, isError: false, idleList: [], searchResultList: []));
-      //get trending
+        isLoading: true,
+        isError: false,
+        idleList: [],
+        searchResultList: [],
+      ));
+      // get trending
       final _result = await _downloadService.getDownloadsImage();
-      //show to ui
-      emit(_result.fold((MainFailure failure) {
-        return state
-            .copyWith(isLoading: true, idleList: [], searchResultList: []);
-      }, (List<Downloads> list) {
-        return state.copyWith(
+      // show to UI
+      emit(_result.fold(
+        (MainFailure failure) {
+          return state.copyWith(
+            isLoading: false,
+            isError: true,
+            idleList: [],
+            searchResultList: [],
+          );
+        },
+        (List<Downloads> list) {
+          return state.copyWith(
             isLoading: false,
             isError: false,
             idleList: list,
-            searchResultList: []);
-      }));
+            searchResultList: [],
+          );
+        },
+      ));
     });
-    //search state
-    on<SearchMovies>((event, emit) {
-      //call search movie api
-      _searchService.searchMovies(movieQuery: event.movieQuery);
-      //sho w to UI
+
+    // search state
+    on<SearchMovies>((event, emit) async {
+      // initialize
+      emit(state.copyWith(
+        isLoading: true,
+        isError: false,
+        searchResultList: [],
+      ));
+      // call search movie API
+      final result =
+          await _searchService.searchMovies(movieQuery: event.movieQuery);
+      emit(result.fold(
+        (failure) => state.copyWith(
+          isLoading: false,
+          isError: true,
+          searchResultList: [],
+        ),
+        (list) => state.copyWith(
+          isLoading: false,
+          isError: false,
+          searchResultList: list.results,
+        ),
+      ));
     });
   }
 }

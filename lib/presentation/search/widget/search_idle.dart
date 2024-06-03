@@ -32,9 +32,9 @@ class SearchIdle extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     final movie = state.idleList[index];
-                   
+
                     return TopSearchItemTile(
-                        title: movie.title ?? "No title  Provide",
+                        title: movie.title ?? "${movie.name}",
                         imageUrl: '$imageAppendUrl${movie.backdropPath}' ??
                             "No movie poster provided");
                   },
