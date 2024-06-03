@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:netflix/application/search/search_bloc.dart';
+import 'package:netflix/presentation/search/widget/search_idle.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/presentation/search/widget/serach_result_widget.dart';
 
 class ScreenSearch extends StatelessWidget {
@@ -8,6 +10,10 @@ class ScreenSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
+      BlocProvider.of<SearchBloc>(context).add(const Initialize());
+    });
+
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -32,9 +38,9 @@ class ScreenSearch extends StatelessWidget {
           ),
           const Expanded(
               child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: SearchResultWidget(),
-          ))
+                  padding: EdgeInsets.all(10.0),
+                  child: SearchIdle() //SearchResultWidget(),
+                  ))
         ],
       )),
     );
