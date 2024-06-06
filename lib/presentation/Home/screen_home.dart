@@ -46,7 +46,9 @@ class ScreenHome extends StatelessWidget {
                       ),
                     ],
                   ),
-                  scrollDirectionNotifier.value == true ? HomeAppBar() : kheight
+                  scrollDirectionNotifier.value == true
+                      ? const HomeAppBar()
+                      : kheight
                 ],
               ),
             );

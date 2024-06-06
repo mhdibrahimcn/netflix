@@ -5,23 +5,22 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix/domain/core/api_end_points.dart';
 import 'package:netflix/domain/core/faliures/main_failure.dart';
-import 'package:netflix/domain/search/models/search_response/search_response.dart';
-import 'package:netflix/domain/search/search_service.dart';
+import 'package:netflix/domain/home/home_service.dart';
+import 'package:netflix/domain/home/models/home_model.dart';
 
-@LazySingleton(as: SearchService)
-class SearchImpl implements SearchService {
+@LazySingleton(as: HomeService)
+class HomeBgImpl implements HomeService {
   @override
-  Future<Either<MainFailure, SearchResponse>> searchMovies(
-      {required String movieQuery}) async {
+  Future<Either<MainFailure, HomeBgModel>> homeBg() async {
     try {
-      final Response response = await Dio(BaseOptions())
-          .get(ApiEndPoints.search, queryParameters: {'query': movieQuery});
+      final Response response =
+          await Dio(BaseOptions()).get(ApiEndPoints.homeBg);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        print(response.data.toString());
+        // log(response.data.toString());
 
         // log("downloadlist${downloadsList.toString()}");
-        final result = SearchResponse.fromJson(response.data);
-
+        final result = HomeBgModel.fromJson(response.data);
+        log(result.toString());
         return right(result);
       } else {
         return const Left(MainFailure.serverFailure());

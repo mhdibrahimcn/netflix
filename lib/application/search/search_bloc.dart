@@ -79,7 +79,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isError: true,
           searchResultList: [],
         ),
-        (list) => state.copyWith(
+        (SearchResponse list) => state.copyWith(
           isLoading: false,
           isError: false,
           searchResultList: list.results,
