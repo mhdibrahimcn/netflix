@@ -41,7 +41,10 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i5.IDownloadsRepo>(),
           gh<_i3.SearchService>(),
         ));
-    gh.factory<_i11.HomeBloc>(() => _i11.HomeBloc(gh<_i7.HomeService>()));
+    gh.factory<_i11.HomeBloc>(() => _i11.HomeBloc(
+          gh<_i7.HomeService>(),
+          gh<_i5.IDownloadsRepo>(),
+        ));
     return this;
   }
 }

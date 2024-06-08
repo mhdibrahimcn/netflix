@@ -19,32 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() homeBg,
+    required TResult Function() homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? homeBg,
+    TResult? Function()? homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? homeBg,
+    TResult Function()? homeLatest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Homebg value) homeBg,
+    required TResult Function(HomeBg value) homeBg,
+    required TResult Function(HomeLatest value) homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Homebg value)? homeBg,
+    TResult? Function(HomeBg value)? homeBg,
+    TResult? Function(HomeLatest value)? homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Homebg value)? homeBg,
+    TResult Function(HomeBg value)? homeBg,
+    TResult Function(HomeLatest value)? homeLatest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,25 +74,25 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
 }
 
 /// @nodoc
-abstract class _$$HomebgImplCopyWith<$Res> {
-  factory _$$HomebgImplCopyWith(
-          _$HomebgImpl value, $Res Function(_$HomebgImpl) then) =
-      __$$HomebgImplCopyWithImpl<$Res>;
+abstract class _$$HomeBgImplCopyWith<$Res> {
+  factory _$$HomeBgImplCopyWith(
+          _$HomeBgImpl value, $Res Function(_$HomeBgImpl) then) =
+      __$$HomeBgImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HomebgImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$HomebgImpl>
-    implements _$$HomebgImplCopyWith<$Res> {
-  __$$HomebgImplCopyWithImpl(
-      _$HomebgImpl _value, $Res Function(_$HomebgImpl) _then)
+class __$$HomeBgImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$HomeBgImpl>
+    implements _$$HomeBgImplCopyWith<$Res> {
+  __$$HomeBgImplCopyWithImpl(
+      _$HomeBgImpl _value, $Res Function(_$HomeBgImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$HomebgImpl implements Homebg {
-  const _$HomebgImpl();
+class _$HomeBgImpl implements HomeBg {
+  const _$HomeBgImpl();
 
   @override
   String toString() {
@@ -96,7 +102,7 @@ class _$HomebgImpl implements Homebg {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$HomebgImpl);
+        (other.runtimeType == runtimeType && other is _$HomeBgImpl);
   }
 
   @override
@@ -106,6 +112,7 @@ class _$HomebgImpl implements Homebg {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() homeBg,
+    required TResult Function() homeLatest,
   }) {
     return homeBg();
   }
@@ -114,6 +121,7 @@ class _$HomebgImpl implements Homebg {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? homeBg,
+    TResult? Function()? homeLatest,
   }) {
     return homeBg?.call();
   }
@@ -122,6 +130,7 @@ class _$HomebgImpl implements Homebg {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? homeBg,
+    TResult Function()? homeLatest,
     required TResult orElse(),
   }) {
     if (homeBg != null) {
@@ -133,7 +142,8 @@ class _$HomebgImpl implements Homebg {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Homebg value) homeBg,
+    required TResult Function(HomeBg value) homeBg,
+    required TResult Function(HomeLatest value) homeLatest,
   }) {
     return homeBg(this);
   }
@@ -141,7 +151,8 @@ class _$HomebgImpl implements Homebg {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Homebg value)? homeBg,
+    TResult? Function(HomeBg value)? homeBg,
+    TResult? Function(HomeLatest value)? homeLatest,
   }) {
     return homeBg?.call(this);
   }
@@ -149,7 +160,8 @@ class _$HomebgImpl implements Homebg {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Homebg value)? homeBg,
+    TResult Function(HomeBg value)? homeBg,
+    TResult Function(HomeLatest value)? homeLatest,
     required TResult orElse(),
   }) {
     if (homeBg != null) {
@@ -159,8 +171,110 @@ class _$HomebgImpl implements Homebg {
   }
 }
 
-abstract class Homebg implements HomeEvent {
-  const factory Homebg() = _$HomebgImpl;
+abstract class HomeBg implements HomeEvent {
+  const factory HomeBg() = _$HomeBgImpl;
+}
+
+/// @nodoc
+abstract class _$$HomeLatestImplCopyWith<$Res> {
+  factory _$$HomeLatestImplCopyWith(
+          _$HomeLatestImpl value, $Res Function(_$HomeLatestImpl) then) =
+      __$$HomeLatestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$HomeLatestImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$HomeLatestImpl>
+    implements _$$HomeLatestImplCopyWith<$Res> {
+  __$$HomeLatestImplCopyWithImpl(
+      _$HomeLatestImpl _value, $Res Function(_$HomeLatestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$HomeLatestImpl implements HomeLatest {
+  const _$HomeLatestImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.homeLatest()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$HomeLatestImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() homeBg,
+    required TResult Function() homeLatest,
+  }) {
+    return homeLatest();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? homeBg,
+    TResult? Function()? homeLatest,
+  }) {
+    return homeLatest?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? homeBg,
+    TResult Function()? homeLatest,
+    required TResult orElse(),
+  }) {
+    if (homeLatest != null) {
+      return homeLatest();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HomeBg value) homeBg,
+    required TResult Function(HomeLatest value) homeLatest,
+  }) {
+    return homeLatest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HomeBg value)? homeBg,
+    TResult? Function(HomeLatest value)? homeLatest,
+  }) {
+    return homeLatest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HomeBg value)? homeBg,
+    TResult Function(HomeLatest value)? homeLatest,
+    required TResult orElse(),
+  }) {
+    if (homeLatest != null) {
+      return homeLatest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HomeLatest implements HomeEvent {
+  const factory HomeLatest() = _$HomeLatestImpl;
 }
 
 /// @nodoc
@@ -168,6 +282,13 @@ mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   List<HomeResultData> get homeResultList => throw _privateConstructorUsedError;
+  List<HomeLatestResultData> get homeLatestList =>
+      throw _privateConstructorUsedError;
+  List<Downloads> get homeTrendingList => throw _privateConstructorUsedError;
+  List<HomeDramaGenreResult> get homeDramaGenreList =>
+      throw _privateConstructorUsedError;
+  List<HomeTvShowResult> get homeTvShowList =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -180,7 +301,13 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {bool isLoading, bool isError, List<HomeResultData> homeResultList});
+      {bool isLoading,
+      bool isError,
+      List<HomeResultData> homeResultList,
+      List<HomeLatestResultData> homeLatestList,
+      List<Downloads> homeTrendingList,
+      List<HomeDramaGenreResult> homeDramaGenreList,
+      List<HomeTvShowResult> homeTvShowList});
 }
 
 /// @nodoc
@@ -199,6 +326,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? isLoading = null,
     Object? isError = null,
     Object? homeResultList = null,
+    Object? homeLatestList = null,
+    Object? homeTrendingList = null,
+    Object? homeDramaGenreList = null,
+    Object? homeTvShowList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -213,6 +344,22 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.homeResultList
           : homeResultList // ignore: cast_nullable_to_non_nullable
               as List<HomeResultData>,
+      homeLatestList: null == homeLatestList
+          ? _value.homeLatestList
+          : homeLatestList // ignore: cast_nullable_to_non_nullable
+              as List<HomeLatestResultData>,
+      homeTrendingList: null == homeTrendingList
+          ? _value.homeTrendingList
+          : homeTrendingList // ignore: cast_nullable_to_non_nullable
+              as List<Downloads>,
+      homeDramaGenreList: null == homeDramaGenreList
+          ? _value.homeDramaGenreList
+          : homeDramaGenreList // ignore: cast_nullable_to_non_nullable
+              as List<HomeDramaGenreResult>,
+      homeTvShowList: null == homeTvShowList
+          ? _value.homeTvShowList
+          : homeTvShowList // ignore: cast_nullable_to_non_nullable
+              as List<HomeTvShowResult>,
     ) as $Val);
   }
 }
@@ -226,7 +373,13 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading, bool isError, List<HomeResultData> homeResultList});
+      {bool isLoading,
+      bool isError,
+      List<HomeResultData> homeResultList,
+      List<HomeLatestResultData> homeLatestList,
+      List<Downloads> homeTrendingList,
+      List<HomeDramaGenreResult> homeDramaGenreList,
+      List<HomeTvShowResult> homeTvShowList});
 }
 
 /// @nodoc
@@ -243,6 +396,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? isError = null,
     Object? homeResultList = null,
+    Object? homeLatestList = null,
+    Object? homeTrendingList = null,
+    Object? homeDramaGenreList = null,
+    Object? homeTvShowList = null,
   }) {
     return _then(_$HomeStateImpl(
       isLoading: null == isLoading
@@ -257,6 +414,22 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value._homeResultList
           : homeResultList // ignore: cast_nullable_to_non_nullable
               as List<HomeResultData>,
+      homeLatestList: null == homeLatestList
+          ? _value._homeLatestList
+          : homeLatestList // ignore: cast_nullable_to_non_nullable
+              as List<HomeLatestResultData>,
+      homeTrendingList: null == homeTrendingList
+          ? _value._homeTrendingList
+          : homeTrendingList // ignore: cast_nullable_to_non_nullable
+              as List<Downloads>,
+      homeDramaGenreList: null == homeDramaGenreList
+          ? _value._homeDramaGenreList
+          : homeDramaGenreList // ignore: cast_nullable_to_non_nullable
+              as List<HomeDramaGenreResult>,
+      homeTvShowList: null == homeTvShowList
+          ? _value._homeTvShowList
+          : homeTvShowList // ignore: cast_nullable_to_non_nullable
+              as List<HomeTvShowResult>,
     ));
   }
 }
@@ -267,8 +440,16 @@ class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {required this.isLoading,
       required this.isError,
-      required final List<HomeResultData> homeResultList})
-      : _homeResultList = homeResultList;
+      required final List<HomeResultData> homeResultList,
+      required final List<HomeLatestResultData> homeLatestList,
+      required final List<Downloads> homeTrendingList,
+      required final List<HomeDramaGenreResult> homeDramaGenreList,
+      required final List<HomeTvShowResult> homeTvShowList})
+      : _homeResultList = homeResultList,
+        _homeLatestList = homeLatestList,
+        _homeTrendingList = homeTrendingList,
+        _homeDramaGenreList = homeDramaGenreList,
+        _homeTvShowList = homeTvShowList;
 
   @override
   final bool isLoading;
@@ -282,9 +463,43 @@ class _$HomeStateImpl implements _HomeState {
     return EqualUnmodifiableListView(_homeResultList);
   }
 
+  final List<HomeLatestResultData> _homeLatestList;
+  @override
+  List<HomeLatestResultData> get homeLatestList {
+    if (_homeLatestList is EqualUnmodifiableListView) return _homeLatestList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_homeLatestList);
+  }
+
+  final List<Downloads> _homeTrendingList;
+  @override
+  List<Downloads> get homeTrendingList {
+    if (_homeTrendingList is EqualUnmodifiableListView)
+      return _homeTrendingList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_homeTrendingList);
+  }
+
+  final List<HomeDramaGenreResult> _homeDramaGenreList;
+  @override
+  List<HomeDramaGenreResult> get homeDramaGenreList {
+    if (_homeDramaGenreList is EqualUnmodifiableListView)
+      return _homeDramaGenreList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_homeDramaGenreList);
+  }
+
+  final List<HomeTvShowResult> _homeTvShowList;
+  @override
+  List<HomeTvShowResult> get homeTvShowList {
+    if (_homeTvShowList is EqualUnmodifiableListView) return _homeTvShowList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_homeTvShowList);
+  }
+
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, isError: $isError, homeResultList: $homeResultList)';
+    return 'HomeState(isLoading: $isLoading, isError: $isError, homeResultList: $homeResultList, homeLatestList: $homeLatestList, homeTrendingList: $homeTrendingList, homeDramaGenreList: $homeDramaGenreList, homeTvShowList: $homeTvShowList)';
   }
 
   @override
@@ -296,12 +511,27 @@ class _$HomeStateImpl implements _HomeState {
                 other.isLoading == isLoading) &&
             (identical(other.isError, isError) || other.isError == isError) &&
             const DeepCollectionEquality()
-                .equals(other._homeResultList, _homeResultList));
+                .equals(other._homeResultList, _homeResultList) &&
+            const DeepCollectionEquality()
+                .equals(other._homeLatestList, _homeLatestList) &&
+            const DeepCollectionEquality()
+                .equals(other._homeTrendingList, _homeTrendingList) &&
+            const DeepCollectionEquality()
+                .equals(other._homeDramaGenreList, _homeDramaGenreList) &&
+            const DeepCollectionEquality()
+                .equals(other._homeTvShowList, _homeTvShowList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isError,
-      const DeepCollectionEquality().hash(_homeResultList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isError,
+      const DeepCollectionEquality().hash(_homeResultList),
+      const DeepCollectionEquality().hash(_homeLatestList),
+      const DeepCollectionEquality().hash(_homeTrendingList),
+      const DeepCollectionEquality().hash(_homeDramaGenreList),
+      const DeepCollectionEquality().hash(_homeTvShowList));
 
   @JsonKey(ignore: true)
   @override
@@ -314,7 +544,11 @@ abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final bool isLoading,
       required final bool isError,
-      required final List<HomeResultData> homeResultList}) = _$HomeStateImpl;
+      required final List<HomeResultData> homeResultList,
+      required final List<HomeLatestResultData> homeLatestList,
+      required final List<Downloads> homeTrendingList,
+      required final List<HomeDramaGenreResult> homeDramaGenreList,
+      required final List<HomeTvShowResult> homeTvShowList}) = _$HomeStateImpl;
 
   @override
   bool get isLoading;
@@ -322,6 +556,14 @@ abstract class _HomeState implements HomeState {
   bool get isError;
   @override
   List<HomeResultData> get homeResultList;
+  @override
+  List<HomeLatestResultData> get homeLatestList;
+  @override
+  List<Downloads> get homeTrendingList;
+  @override
+  List<HomeDramaGenreResult> get homeDramaGenreList;
+  @override
+  List<HomeTvShowResult> get homeTvShowList;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

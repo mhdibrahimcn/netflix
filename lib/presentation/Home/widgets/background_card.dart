@@ -11,13 +11,11 @@ import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
 class BackgroundCard extends StatelessWidget {
   const BackgroundCard({
     super.key,
-    required this.size,
   });
-
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeBg());
     });

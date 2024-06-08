@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ValueNotifier<int> selectedIndexNotifier = ValueNotifier(0);
+ValueNotifier<int> selectedIndexNotifier = ValueNotifier(2);
 
 class BottomNavigationWidget extends StatelessWidget {
   const BottomNavigationWidget({super.key});

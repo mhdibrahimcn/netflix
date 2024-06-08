@@ -5,11 +5,13 @@ import 'package:flutter/widgets.dart';
 import 'package:netflix/core/constants.dart';
 
 class NumberCard extends StatelessWidget {
-  const NumberCard({super.key, required this.size, required this.index});
+  const NumberCard({super.key, required this.index, required this.posterImage});
   final int index;
-  final Size size;
+  final String posterImage;
+
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(left: 10),
       child: Stack(
@@ -24,10 +26,8 @@ class NumberCard extends StatelessWidget {
                 height: size.height * 0.24,
                 decoration: BoxDecoration(
                     borderRadius: kRadius,
-                    image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg"))),
+                    image: DecorationImage(
+                        fit: BoxFit.cover, image: NetworkImage(posterImage))),
               ),
             ],
           ),

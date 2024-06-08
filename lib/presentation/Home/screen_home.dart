@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/home/home_bloc.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/Home/widgets/background_card.dart';
 import 'package:netflix/presentation/Home/widgets/home_app_bar.dart';
@@ -13,42 +15,70 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeLatest());
+    });
     return Scaffold(
       body: ValueListenableBuilder(
           valueListenable: scrollDirectionNotifier,
           builder: (BuildContext context, index, _) {
             return NotificationListener<UserScrollNotification>(
               onNotification: (notification) {
-                final ScrollDirection direction = notification.direction;
-                if (direction == ScrollDirection.forward) {
-                  scrollDirectionNotifier.value = true;
-                } else if (direction == ScrollDirection.reverse) {
-                  scrollDirectionNotifier.value = false;
+                if (notification.metrics.axis == Axis.vertical) {
+                  final ScrollDirection direction = notification.direction;
+                  if (direction == ScrollDirection.forward) {
+                    scrollDirectionNotifier.value = true;
+                  } else if (direction == ScrollDirection.reverse) {
+                    scrollDirectionNotifier.value = false;
+                  }
                 }
-
                 return true;
               },
               child: Stack(
                 children: [
-                  ListView(
-                    children: [
-                      BackgroundCard(size: size),
-                      const MainTitleCard(
-                        title: 'Released In Past Year',
-                      ),
-                      const MainTitleCard(
-                        title: 'Trending Now',
-                      ),
-                      NumberTitleCard(size: size),
-                      const MainTitleCard(
-                        title: 'Tense Drama',
-                      ),
-                    ],
+                  BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      final _releasedPastYear = state.homeLatestList.map((m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      }).toList();
+                      final _trendingList = state.homeTrendingList.map((m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      }).toList();
+                      final _tvShowList = state.homeTvShowList.map((m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      }).toList();
+                      final _dramaList = state.homeDramaGenreList.map((m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      }).toList();
+                      return ListView(
+                        children: [
+                          const BackgroundCard(),
+                          MainTitleCard(
+                            title: 'Released In Past Year',
+                            posterMovieList: _releasedPastYear,
+                            isLoading: state.isLoading,
+                          ),
+                          MainTitleCard(
+                            title: 'Trending Now',
+                            posterMovieList: _trendingList,
+                            isLoading: state.isLoading,
+                          ),
+                          NumberTitleCard(
+                            posterList: _tvShowList,
+                            isLoading: false,
+                          ),
+                          MainTitleCard(
+                            title: 'Tense Drama',
+                            posterMovieList: _dramaList,
+                            isLoading: false,
+                          ),
+                        ],
+                      );
+                    },
                   ),
                   scrollDirectionNotifier.value == true
                       ? const HomeAppBar()
-                      : kheight
+                      : kheight,
                 ],
               ),
             );
