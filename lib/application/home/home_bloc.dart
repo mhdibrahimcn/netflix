@@ -12,9 +12,9 @@ import 'package:netflix/domain/home/models/home_latest_model/home_latest_model.d
 import 'package:netflix/domain/home/models/home_model.dart';
 import 'package:netflix/domain/home/models/home_tv_shows_model/home_tv_shows_model.dart';
 
+part 'home_bloc.freezed.dart';
 part 'home_event.dart';
 part 'home_state.dart';
-part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -42,10 +42,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               isLoading: false,
               isError: true,
               homeResultList: []), (HomeBgModel list) {
-        final _homeBg = list.results;
-        _homeBg.shuffle();
+        final homeBg = list.results;
+        homeBg.shuffle();
         return state.copyWith(
-            isLoading: false, isError: true, homeResultList: _homeBg);
+            isLoading: false, isError: true, homeResultList: homeBg);
       }));
     });
 
@@ -53,11 +53,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeLatest>(
       //if state exists
       (event, emit) async {
-        if (state.homeLatestList.isNotEmpty) {
+        if (state.homeLatestList.isNotEmpty &
+            state.homeTrendingList.isNotEmpty &
+            state.homeDramaGenreList.isNotEmpty &
+            state.homeTvShowList.isNotEmpty) {
           emit(state.copyWith(
               isLoading: false,
               isError: false,
-              homeLatestList: state.homeLatestList));
+              homeLatestList: state.homeLatestList,
+              homeTrendingList: state.homeTrendingList,
+              homeTvShowList: state.homeTvShowList,
+              homeDramaGenreList: state.homeDramaGenreList));
           return;
         }
         //initializing
@@ -100,6 +106,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         }));
 //tv Show Result
         final tvShowResult = await _homeService.getHomeTvShow();
+
         emit(tvShowResult.fold(
             (MainFailure failure) => state.copyWith(
                   isLoading: false,

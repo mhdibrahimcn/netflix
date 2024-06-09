@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart'; // Add the shimmer package
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/Home/widgets/number_card.dart';
 import 'package:netflix/presentation/widgets/main_title.dart';
+import 'package:shimmer/shimmer.dart'; // Add the shimmer package
 
 class NumberTitleCard extends StatelessWidget {
   const NumberTitleCard({
@@ -31,7 +31,7 @@ class NumberTitleCard extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => Shimmer.fromColors(
                       baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      highlightColor: Colors.grey[300]!,
                       child: Container(
                         width: size.width * 0.4,
                         height: size.height * 0.24,
@@ -43,10 +43,12 @@ class NumberTitleCard extends StatelessWidget {
                   )
                 : ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => NumberCard(
-                      index: index,
-                      posterImage: posterList[index],
-                    ),
+                    itemBuilder: (context, index) {
+                      return NumberCard(
+                        index: index,
+                        posterImage: posterList[index],
+                      );
+                    },
                     separatorBuilder: (context, index) => kwidth,
                     itemCount: 10,
                   ),

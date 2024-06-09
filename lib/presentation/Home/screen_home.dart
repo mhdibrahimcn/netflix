@@ -8,7 +8,8 @@ import 'package:netflix/presentation/Home/widgets/home_app_bar.dart';
 import 'package:netflix/presentation/Home/widgets/main_title_card.dart';
 import 'package:netflix/presentation/Home/widgets/number_title_card.dart';
 
-ValueNotifier<bool> scrollDirectionNotifier = ValueNotifier(true);
+ValueNotifier<double> scrollOffsetNotifier = ValueNotifier<double>(0.0);
+ValueNotifier<bool> scrollDirectionNotifier = ValueNotifier<bool>(false);
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -18,71 +19,85 @@ class ScreenHome extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeLatest());
     });
+
     return Scaffold(
-      body: ValueListenableBuilder(
-          valueListenable: scrollDirectionNotifier,
-          builder: (BuildContext context, index, _) {
-            return NotificationListener<UserScrollNotification>(
-              onNotification: (notification) {
-                if (notification.metrics.axis == Axis.vertical) {
-                  final ScrollDirection direction = notification.direction;
-                  if (direction == ScrollDirection.forward) {
-                    scrollDirectionNotifier.value = true;
-                  } else if (direction == ScrollDirection.reverse) {
-                    scrollDirectionNotifier.value = false;
-                  }
-                }
-                return true;
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (notification) {
+          if (notification is ScrollUpdateNotification &&
+              notification.metrics.axis == Axis.vertical) {
+            final double newScrollOffset = notification.metrics.pixels;
+            scrollOffsetNotifier.value = newScrollOffset;
+
+            final ScrollDirection direction = notification.scrollDelta! > 0
+                ? ScrollDirection.forward
+                : ScrollDirection.reverse;
+
+            scrollDirectionNotifier.value =
+                newScrollOffset > MediaQuery.of(context).size.height / 2 &&
+                    direction == ScrollDirection.forward;
+          }
+
+          return false;
+        },
+        child: Stack(
+          children: [
+            BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                final releasedPastYear = state.homeLatestList
+                    .map((m) => '$imageAppendUrl${m.posterPath}')
+                    .toList();
+                final trendingList = state.homeTrendingList
+                    .map((m) => '$imageAppendUrl${m.posterPath}')
+                    .toList();
+                final tvShowList = state.homeTvShowList
+                    .map((m) => '$imageAppendUrl${m.posterPath}')
+                    .toList();
+                final dramaList = state.homeDramaGenreList
+                    .map((m) => '$imageAppendUrl${m.posterPath}')
+                    .toList();
+
+                return ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    const BackgroundCard(),
+                    if (releasedPastYear.isNotEmpty)
+                      MainTitleCard(
+                        title: 'Released In Past Year',
+                        posterMovieList: releasedPastYear,
+                        isLoading: state.isLoading,
+                      ),
+                    if (trendingList.isNotEmpty)
+                      MainTitleCard(
+                        title: 'Trending Now',
+                        posterMovieList: trendingList,
+                        isLoading: state.isLoading,
+                      ),
+                    if (tvShowList.isNotEmpty)
+                      NumberTitleCard(
+                        posterList: tvShowList,
+                        isLoading: state.isLoading,
+                      ),
+                    if (dramaList.isNotEmpty)
+                      MainTitleCard(
+                        title: 'Tense Drama',
+                        posterMovieList: dramaList,
+                        isLoading: state.isLoading,
+                      ),
+                  ],
+                );
               },
-              child: Stack(
-                children: [
-                  BlocBuilder<HomeBloc, HomeState>(
-                    builder: (context, state) {
-                      final _releasedPastYear = state.homeLatestList.map((m) {
-                        return '$imageAppendUrl${m.posterPath}';
-                      }).toList();
-                      final _trendingList = state.homeTrendingList.map((m) {
-                        return '$imageAppendUrl${m.posterPath}';
-                      }).toList();
-                      final _tvShowList = state.homeTvShowList.map((m) {
-                        return '$imageAppendUrl${m.posterPath}';
-                      }).toList();
-                      final _dramaList = state.homeDramaGenreList.map((m) {
-                        return '$imageAppendUrl${m.posterPath}';
-                      }).toList();
-                      return ListView(
-                        children: [
-                          const BackgroundCard(),
-                          MainTitleCard(
-                            title: 'Released In Past Year',
-                            posterMovieList: _releasedPastYear,
-                            isLoading: state.isLoading,
-                          ),
-                          MainTitleCard(
-                            title: 'Trending Now',
-                            posterMovieList: _trendingList,
-                            isLoading: state.isLoading,
-                          ),
-                          NumberTitleCard(
-                            posterList: _tvShowList,
-                            isLoading: false,
-                          ),
-                          MainTitleCard(
-                            title: 'Tense Drama',
-                            posterMovieList: _dramaList,
-                            isLoading: false,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                  scrollDirectionNotifier.value == true
-                      ? const HomeAppBar()
-                      : kheight,
-                ],
-              ),
-            );
-          }),
+            ),
+            ValueListenableBuilder<bool>(
+              valueListenable: scrollDirectionNotifier,
+              builder: (context, shouldShowAppBar, _) {
+                return shouldShowAppBar
+                    ? const SizedBox.shrink()
+                    : const HomeAppBar();
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

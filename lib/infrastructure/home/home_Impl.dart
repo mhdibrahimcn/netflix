@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -23,13 +21,12 @@ class HomeBgImpl implements HomeService {
 
         // log("downloadlist${downloadsList.toString()}");
         final result = HomeBgModel.fromJson(response.data);
-        log(result.toString());
+
         return right(result);
       } else {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }
@@ -44,13 +41,12 @@ class HomeBgImpl implements HomeService {
 
         // log("downloadlist${downloadsList.toString()}");
         final result = HomeLatestModel.fromJson(response.data);
-        log(result.toString());
+
         return right(result);
       } else {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }
@@ -60,19 +56,16 @@ class HomeBgImpl implements HomeService {
     try {
       final Response response =
           await Dio(BaseOptions()).get(ApiEndPoints.homeTvShows);
-      log(response.statusCode.toString());
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data.toString());
 
+      if (response.statusCode == 200 || response.statusCode == 201) {
         // log("downloadlist${downloadsList.toString()}");
         final result = HomeTvShowsModel.fromJson(response.data);
-        log(result.toString());
+
         return right(result);
       } else {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }
@@ -87,13 +80,12 @@ class HomeBgImpl implements HomeService {
 
         // log("downloadlist${downloadsList.toString()}");
         final result = HomeDramaGenreModel.fromJson(response.data);
-        log(result.toString());
+
         return right(result);
       } else {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }
