@@ -45,7 +45,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         final homeBg = list.results;
         homeBg.shuffle();
         return state.copyWith(
-            isLoading: false, isError: true, homeResultList: homeBg);
+            isLoading: false, isError: false, homeResultList: homeBg);
       }));
     });
 

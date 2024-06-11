@@ -12,11 +12,12 @@ class HomeState with _$HomeState {
     required List<HomeTvShowResult> homeTvShowList,
   }) = _HomeState;
   factory HomeState.initial() => const HomeState(
-      isLoading: false,
-      isError: false,
-      homeResultList: [],
-      homeLatestList: [],
-      homeTrendingList: [],
-      homeDramaGenreList: [],
-      homeTvShowList: []);
+        isLoading: false,
+        isError: false,
+        homeResultList: [],
+        homeLatestList: [],
+        homeTrendingList: [],
+        homeDramaGenreList: [],
+        homeTvShowList: [],
+      );
 }
