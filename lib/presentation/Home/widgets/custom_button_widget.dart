@@ -42,20 +42,20 @@ class Playbutton extends StatelessWidget {
         onPressed: () {},
         icon: const Icon(
           Icons.play_arrow_rounded,
-          size: 30,
+          size: 27,
           color: kwhite,
         ),
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
               side: const BorderSide(color: Colors.white, width: 2.0),
             ),
           ),
           backgroundColor:
-              MaterialStateProperty.all(Colors.transparent.withOpacity(0.4)),
+              WidgetStateProperty.all(Colors.transparent.withOpacity(0.4)),
           overlayColor:
-              MaterialStateProperty.all(Colors.transparent.withOpacity(0.9)),
+              WidgetStateProperty.all(Colors.transparent.withOpacity(0.9)),
         ),
         label: const Text(
           "Play",

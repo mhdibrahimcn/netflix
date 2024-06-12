@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -6,6 +8,7 @@ import 'package:netflix/application/home/home_getx_controller.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/domain/home/models/home_model.dart';
 import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
+import 'package:netflix/presentation/Home/widgets/home_app_bar.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BackgroundCard extends StatelessWidget {
@@ -55,7 +58,7 @@ class BackgroundCard extends StatelessWidget {
 
                 return Container(
                   width: double.infinity,
-                  height: size.height * 0.76,
+                  height: size.height * 0.83,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -69,13 +72,13 @@ class BackgroundCard extends StatelessWidget {
                 );
               }),
               Positioned(
-                top: 70,
+                top: 155,
                 bottom: 30,
-                right: 25,
-                left: 25,
+                right: 23,
+                left: 23,
                 child: Container(
-                  width: size.width * 0.87,
-                  height: size.height * 0.6,
+                  width: size.width * 0.7,
+                  height: size.height * 0.5,
                   decoration: BoxDecoration(
                     borderRadius: kRadius15,
                     image: DecorationImage(
@@ -97,13 +100,20 @@ class BackgroundCard extends StatelessWidget {
                         bottom: 0,
                         left: 0,
                         right: 0,
-                        child: Container(
-                          height: size.height * 0.067,
-                          color: Colors.black.withOpacity(0.24),
+                        child: ClipRect(
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+                            child: Container(
+                              height: size.height * 0.066,
+                              decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.24),
+                                  borderRadius: kRadius15),
+                            ),
+                          ),
                         ),
                       ),
                       const Positioned(
-                        bottom: 5,
+                        bottom: 2,
                         left: 0,
                         right: 0,
                         child: Row(
@@ -112,11 +122,15 @@ class BackgroundCard extends StatelessWidget {
                             CustomButtonWidget(
                               icon: Icons.add,
                               label: 'My List',
+                              iconSize: 23,
+                              textSize: 13,
                             ),
                             Playbutton(),
                             CustomButtonWidget(
                               icon: Icons.info,
                               label: 'Info',
+                              iconSize: 23,
+                              textSize: 13,
                             ),
                           ],
                         ),
@@ -125,6 +139,7 @@ class BackgroundCard extends StatelessWidget {
                   ),
                 ),
               ),
+              const Positioned(top: 40, left: 0, right: 0, child: HomeAppBar())
             ],
           );
         }

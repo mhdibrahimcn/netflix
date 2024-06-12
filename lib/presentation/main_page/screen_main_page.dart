@@ -19,13 +19,12 @@ class ScreenMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: ValueListenableBuilder(
+      body: ValueListenableBuilder(
         valueListenable: selectedIndexNotifier,
         builder: (BuildContext context, int index, Widget? child) {
           return pages[index];
         },
-      )),
+      ),
       bottomNavigationBar: const BottomNavigationWidget(),
     );
   }

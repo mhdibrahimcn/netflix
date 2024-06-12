@@ -6,24 +6,27 @@ class AppBarWidget extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        kwidth,
-        Text(title,
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900)),
-        const Spacer(),
-        const Icon(
-          Icons.cast,
-          color: Colors.white,
-          size: 25,
-        ),
-        kwidth,
-        CircleAvatar(
-          radius: 20,
-          child: Icon(Icons.person),
-        ),
-        kwidth
-      ],
+    return SafeArea(
+      child: Row(
+        children: [
+          kwidth,
+          Text(title,
+              style:
+                  const TextStyle(fontSize: 25, fontWeight: FontWeight.w900)),
+          const Spacer(),
+          const Icon(
+            Icons.cast,
+            color: Colors.white,
+            size: 25,
+          ),
+          kwidth,
+          const CircleAvatar(
+            radius: 20,
+            child: Icon(Icons.person),
+          ),
+          kwidth
+        ],
+      ),
     );
   }
 }

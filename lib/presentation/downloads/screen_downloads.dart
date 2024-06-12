@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/downloads/widgets/download_image_widget.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:netflix/presentation/widgets/app_bar_widget.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({super.key});
-  final _widgetList = [const _SmartDownloads(), Section2(), const Section3()];
+  final _widgetList = [
+    const _SmartDownloads(),
+    const Section2(),
+    const Section3()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +22,16 @@ class ScreenDownloads extends StatelessWidget {
           child: AppBarWidget(
             title: "Downloads",
           )),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(10),
-        itemBuilder: (context, index) => _widgetList[index],
-        separatorBuilder: (context, index) => const SizedBox(
-          height: 19,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.separated(
+          padding: const EdgeInsets.all(10),
+          itemBuilder: (context, index) => _widgetList[index],
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 19,
+          ),
+          itemCount: _widgetList.length,
         ),
-        itemCount: _widgetList.length,
       ),
     );
   }
@@ -102,7 +108,7 @@ class Section2 extends StatelessWidget {
                   ),
                 ),
               );
-            } else if (state.downloads != null && state.downloads!.isNotEmpty) {
+            } else if (state.downloads.isNotEmpty) {
               return Stack(
                 alignment: Alignment.center,
                 children: [
@@ -112,21 +118,21 @@ class Section2 extends StatelessWidget {
                   ),
                   DownloadImageWidget(
                     imageList:
-                        '$imageAppendUrl${state.downloads![0].posterPath}',
+                        '$imageAppendUrl${state.downloads[0].posterPath}',
                     margin: const EdgeInsets.only(left: 165, bottom: 15),
                     angle: 20,
                     size: Size(size.width * 0.4, size.height * 0.27),
                   ),
                   DownloadImageWidget(
                     imageList:
-                        '$imageAppendUrl${state.downloads![1].posterPath}',
+                        '$imageAppendUrl${state.downloads[1].posterPath}',
                     margin: const EdgeInsets.only(right: 165, bottom: 15),
                     angle: -20,
                     size: Size(size.width * 0.4, size.height * 0.27),
                   ),
                   DownloadImageWidget(
                     imageList:
-                        '$imageAppendUrl${state.downloads![2].posterPath}',
+                        '$imageAppendUrl${state.downloads[2].posterPath}',
                     margin: const EdgeInsets.only(right: 0, top: 10),
                     size: Size(size.width * 0.43, size.height * 0.3),
                   ),

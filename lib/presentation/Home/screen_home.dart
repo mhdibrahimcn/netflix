@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/home/home_bloc.dart';
 import 'package:netflix/core/constants.dart';
@@ -15,6 +16,10 @@ class ScreenHome extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeLatest());
     });
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
 
     return Scaffold(
       extendBodyBehindAppBar: true,
