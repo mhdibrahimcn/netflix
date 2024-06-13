@@ -19,13 +19,19 @@ class ScreenMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder(
+        body: Stack(children: [
+      ValueListenableBuilder(
         valueListenable: selectedIndexNotifier,
         builder: (BuildContext context, int index, Widget? child) {
           return pages[index];
         },
       ),
-      bottomNavigationBar: const BottomNavigationWidget(),
-    );
+      const Positioned(
+        left: 0,
+        right: 0,
+        bottom: 20, // Adjust to move it up or down as desired
+        child: BottomNavigationWidget(),
+      ),
+    ]));
   }
 }
