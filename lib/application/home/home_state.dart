@@ -10,6 +10,7 @@ class HomeState with _$HomeState {
     required List<Downloads> homeTrendingList,
     required List<HomeDramaGenreResult> homeDramaGenreList,
     required List<HomeTvShowResult> homeTvShowList,
+    required int currentIndex,
   }) = _HomeState;
   factory HomeState.initial() => const HomeState(
         isLoading: false,
@@ -19,5 +20,6 @@ class HomeState with _$HomeState {
         homeTrendingList: [],
         homeDramaGenreList: [],
         homeTvShowList: [],
+        currentIndex: 0,
       );
 }

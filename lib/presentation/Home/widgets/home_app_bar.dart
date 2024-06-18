@@ -1,3 +1,5 @@
+import 'dart:ui'; // Needed for ImageFilter
+
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
 
@@ -21,7 +23,7 @@ class HomeAppBar extends StatelessWidget {
               const SizedBox(width: 50),
               Image.asset(
                 "assets/images/logo/netflixLogo.png",
-                width: size.width * 0.32,
+                width: size.width * 0.33,
                 height: size.height * 0.064,
               ),
               const Spacer(),
@@ -48,15 +50,24 @@ class HomeAppBar extends StatelessWidget {
   }
 
   Widget _buildRoundedButton(BuildContext context, String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: Text(
-        text,
-        style: khometextstyle.copyWith(color: Colors.white),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20.0),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Text(
+            text,
+            style: khometextstyle.copyWith(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     );
   }

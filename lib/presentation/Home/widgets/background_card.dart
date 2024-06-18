@@ -1,10 +1,11 @@
 import 'dart:ui';
 
+import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:netflix/application/home/getx/home_getx_controller.dart';
 import 'package:netflix/application/home/home_bloc.dart';
-import 'package:netflix/application/home/home_getx_controller.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/domain/home/models/home_model.dart';
 import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
@@ -20,6 +21,8 @@ class BackgroundCard extends StatelessWidget {
 
     // Ensure that PaletteController is registered with GetX
     final PaletteController paletteController = Get.put(PaletteController());
+    final CustomCarouselController customCarouselController =
+        Get.put(CustomCarouselController());
 
     // Move expensive operation outside build method
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -44,7 +47,6 @@ class BackgroundCard extends StatelessWidget {
         } else if (homeResultList.isNotEmpty) {
           final String imagePath =
               '$imageAppendUrl${homeResultList[0].posterPath}';
-          // Generate palette
           paletteController.generatePalette(imagePath);
 
           return Stack(
@@ -74,68 +76,92 @@ class BackgroundCard extends StatelessWidget {
               Positioned(
                 top: 155,
                 bottom: 30,
-                right: 23,
-                left: 23,
-                child: Container(
-                  width: size.width * 0.7,
-                  height: size.height * 0.5,
-                  decoration: BoxDecoration(
-                    borderRadius: kRadius15,
-                    image: DecorationImage(
-                      image: NetworkImage(imagePath),
-                      fit: BoxFit.cover,
+                right: 0,
+                left: 0,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: cs.CarouselSlider.builder(
+                    carouselController:
+                        customCarouselController.carouselController,
+                    options: cs.CarouselOptions(
+                      height: size.height * 0.7,
+                      viewportFraction: 0.82,
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        customCarouselController.updateIndex(index);
+                        final String newImagePath =
+                            '$imageAppendUrl${homeResultList[index].posterPath}';
+                        paletteController.generatePalette(newImagePath);
+                      },
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: ClipRect(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-                            child: Container(
-                              height: size.height * 0.066,
-                              decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.24),
-                                  borderRadius: kRadius15),
-                            ),
+                    itemCount: homeResultList.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return Container(
+                        width: size.width * 0.82,
+                        height: size.height * 0.5,
+                        decoration: BoxDecoration(
+                          borderRadius: kRadius15,
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                '$imageAppendUrl${homeResultList[index].posterPath}'),
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                      ),
-                      const Positioned(
-                        bottom: 2,
-                        left: 0,
-                        right: 0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            CustomButtonWidget(
-                              icon: Icons.add,
-                              label: 'My List',
-                              iconSize: 23,
-                              textSize: 13,
-                            ),
-                            Playbutton(),
-                            CustomButtonWidget(
-                              icon: Icons.info,
-                              label: 'Info',
-                              iconSize: 23,
-                              textSize: 13,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.4),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(0, 6),
                             ),
                           ],
                         ),
-                      )
-                    ],
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: ClipRect(
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                      sigmaX: 2.0, sigmaY: 2.0),
+                                  child: Container(
+                                    height: size.height * 0.066,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.24),
+                                        borderRadius: kRadius15),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Positioned(
+                              bottom: 2,
+                              left: 0,
+                              right: 0,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  CustomButtonWidget(
+                                    icon: Icons.add,
+                                    label: 'My List',
+                                    iconSize: 23,
+                                    textSize: 13,
+                                  ),
+                                  PlayButton(),
+                                  CustomButtonWidget(
+                                    icon: Icons.info,
+                                    label: 'Info',
+                                    iconSize: 23,
+                                    textSize: 13,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
@@ -146,5 +172,14 @@ class BackgroundCard extends StatelessWidget {
         return Container();
       },
     );
+  }
+}
+
+class CustomCarouselController extends GetxController {
+  var currentIndex = 0.obs;
+  final carouselController = cs.CarouselController();
+
+  void updateIndex(int index) {
+    currentIndex.value = index;
   }
 }

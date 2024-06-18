@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -27,6 +29,7 @@ class HomeBgImpl implements HomeService {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
+      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }

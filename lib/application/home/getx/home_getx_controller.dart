@@ -22,7 +22,8 @@ class PaletteController extends GetxController {
       if (paletteGenerator.paletteColors.isNotEmpty) {
         final List<PaletteColor> paletteColors = paletteGenerator.paletteColors;
         final int colorCount = paletteColors.length;
-        // Add colors from the top, bottom, left, and right sides of the image
+
+        // Example: Add colors from the top, bottom, left, and right sides of the image
         sideColors.addAll([
           paletteColors[0].color.withOpacity(1.0), // Top color
           paletteColors[colorCount ~/ 4].color.withOpacity(1.0), // Left color

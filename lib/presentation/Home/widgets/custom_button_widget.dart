@@ -31,8 +31,8 @@ class CustomButtonWidget extends StatelessWidget {
   }
 }
 
-class Playbutton extends StatelessWidget {
-  const Playbutton({
+class PlayButton extends StatelessWidget {
+  const PlayButton({
     super.key,
   });
 
