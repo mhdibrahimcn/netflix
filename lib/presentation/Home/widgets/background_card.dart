@@ -58,7 +58,9 @@ class BackgroundCard extends StatelessWidget {
                 final Color endColor =
                     sideColors.length > 1 ? sideColors[1] : Colors.transparent;
 
-                return Container(
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 600),
+                  curve: Curves.easeInOut,
                   width: double.infinity,
                   height: size.height * 0.83,
                   decoration: BoxDecoration(
@@ -74,8 +76,8 @@ class BackgroundCard extends StatelessWidget {
                 );
               }),
               Positioned(
-                top: 155,
-                bottom: 30,
+                top: 160,
+                bottom: 20,
                 right: 0,
                 left: 0,
                 child: SizedBox(
@@ -108,10 +110,14 @@ class BackgroundCard extends StatelessWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.4),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: const Offset(0, 6),
+                              color: Colors.black
+                                  .withOpacity(0.6), // Adjust opacity as needed
+                              blurRadius:
+                                  4, // Increase blur radius for softer shadow
+                              spreadRadius:
+                                  1, // Spread radius controls the size of the shadow
+                              offset:
+                                  const Offset(0, 0), // Offset of the shadow
                             ),
                           ],
                         ),
@@ -135,7 +141,7 @@ class BackgroundCard extends StatelessWidget {
                               ),
                             ),
                             const Positioned(
-                              bottom: 2,
+                              bottom: 3,
                               left: 0,
                               right: 0,
                               child: Row(

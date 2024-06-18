@@ -42,7 +42,7 @@ class PlayButton extends StatelessWidget {
         onPressed: () {},
         icon: const Icon(
           Icons.play_arrow_rounded,
-          size: 27,
+          size: 25,
           color: kwhite,
         ),
         style: ButtonStyle(

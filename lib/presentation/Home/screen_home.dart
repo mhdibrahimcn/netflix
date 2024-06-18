@@ -47,9 +47,11 @@ class ScreenHome extends StatelessWidget {
 
               final Color endColor =
                   sideColors.length > 1 ? sideColors[1] : Colors.transparent;
-              return Container(
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 600),
+                curve: Curves.easeInOut,
                 width: double.infinity,
-                decoration: BoxDecoration(color: endColor.withOpacity(0.9)),
+                decoration: BoxDecoration(color: endColor),
               );
             }),
             ScrollablePositionedList.builder(
