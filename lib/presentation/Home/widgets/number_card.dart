@@ -1,7 +1,6 @@
 import 'package:bordered_text/bordered_text.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:netflix/core/constants.dart';
 
 class NumberCard extends StatelessWidget {
@@ -27,7 +26,8 @@ class NumberCard extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: kRadius,
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: NetworkImage(posterImage))),
+                        fit: BoxFit.cover,
+                        image: CachedNetworkImageProvider(posterImage))),
               ),
             ],
           ),

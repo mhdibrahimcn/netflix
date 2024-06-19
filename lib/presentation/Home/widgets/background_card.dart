@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,37 +19,29 @@ class BackgroundCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
-    // Ensure that PaletteController is registered with GetX
     final PaletteController paletteController = Get.put(PaletteController());
     final CustomCarouselController customCarouselController =
         Get.put(CustomCarouselController());
 
-    // Move expensive operation outside build method
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeBg());
     });
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        // Cache frequently used values
         final bool isLoading = state.isLoading;
         final List<HomeResultData> homeResultList = state.homeResultList;
+
         if (isLoading) {
           return Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
-            child: Container(
+            baseColor: Colors.grey,
+            highlightColor: Colors.grey,
+            child: SizedBox(
               width: double.infinity,
-              height: size.height * 0.76,
-              color: Colors.white,
+              height: 0.76 * size.height,
             ),
           );
         } else if (homeResultList.isNotEmpty) {
-          final String imagePath =
-              '$imageAppendUrl${homeResultList[0].posterPath}';
-          paletteController.generatePalette(imagePath);
-
           return Stack(
             children: [
               Obx(() {
@@ -62,7 +55,7 @@ class BackgroundCard extends StatelessWidget {
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.easeInOut,
                   width: double.infinity,
-                  height: size.height * 0.83,
+                  height: 0.83 * size.height,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -86,38 +79,43 @@ class BackgroundCard extends StatelessWidget {
                     carouselController:
                         customCarouselController.carouselController,
                     options: cs.CarouselOptions(
-                      height: size.height * 0.7,
+                      height: 0.7 * size.height,
                       viewportFraction: 0.82,
                       enlargeCenterPage: true,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 10),
+                      autoPlayAnimationDuration: const Duration(seconds: 2),
+                      onScrolled: (value) {
+                        if (value! % 1 == 0) {
+                          final String newImagePath =
+                              '$imageAppendUrl${homeResultList[customCarouselController.currentIndex.value].posterPath}';
+                          Future.delayed(const Duration(milliseconds: 200), () {
+                            paletteController.generatePalette(newImagePath);
+                          });
+                        }
+                      },
                       onPageChanged: (index, reason) {
                         customCarouselController.updateIndex(index);
-                        final String newImagePath =
-                            '$imageAppendUrl${homeResultList[index].posterPath}';
-                        paletteController.generatePalette(newImagePath);
                       },
                     ),
                     itemCount: homeResultList.length,
                     itemBuilder: (context, index, realIndex) {
                       return Container(
-                        width: size.width * 0.82,
-                        height: size.height * 0.5,
+                        width: 0.82 * size.width,
+                        height: 0.5 * size.height,
                         decoration: BoxDecoration(
                           borderRadius: kRadius15,
                           image: DecorationImage(
-                            image: NetworkImage(
+                            image: CachedNetworkImageProvider(
                                 '$imageAppendUrl${homeResultList[index].posterPath}'),
                             fit: BoxFit.cover,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black
-                                  .withOpacity(0.6), // Adjust opacity as needed
-                              blurRadius:
-                                  4, // Increase blur radius for softer shadow
-                              spreadRadius:
-                                  1, // Spread radius controls the size of the shadow
-                              offset:
-                                  const Offset(0, 0), // Offset of the shadow
+                              color: Colors.black.withOpacity(0.6),
+                              blurRadius: 4,
+                              spreadRadius: 1,
+                              offset: const Offset(0, 0),
                             ),
                           ],
                         ),
@@ -130,12 +128,15 @@ class BackgroundCard extends StatelessWidget {
                               child: ClipRect(
                                 child: BackdropFilter(
                                   filter: ImageFilter.blur(
-                                      sigmaX: 2.0, sigmaY: 2.0),
+                                    sigmaX: 2.0,
+                                    sigmaY: 2.0,
+                                  ),
                                   child: Container(
-                                    height: size.height * 0.066,
+                                    height: 0.066 * size.height,
                                     decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.24),
-                                        borderRadius: kRadius15),
+                                      color: Colors.black.withOpacity(0.24),
+                                      borderRadius: kRadius15,
+                                    ),
                                   ),
                                 ),
                               ),

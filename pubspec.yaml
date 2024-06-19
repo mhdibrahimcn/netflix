@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bordered_text: ^2.0.0
+  cached_network_image: ^3.3.1
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -25,6 +26,7 @@ dependencies:
   palette_generator: ^0.3.3+3
   scrollable_positioned_list: ^0.3.8
   shimmer: ^3.0.0
+  sqflite: ^2.3.3+1
   video_player: ^2.8.6
 
 dev_dependencies:

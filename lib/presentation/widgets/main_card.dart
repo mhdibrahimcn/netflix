@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
 
@@ -18,7 +19,7 @@ class MainCard extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: kRadius,
           image: DecorationImage(
-              fit: BoxFit.cover, image: NetworkImage(posterUrl))),
+              fit: BoxFit.cover, image: CachedNetworkImageProvider(posterUrl))),
     );
   }
 }
