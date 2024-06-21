@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/search/widget/search_text_title_widget.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SearchResultWidget extends StatelessWidget {
@@ -58,7 +58,7 @@ class SearchResultWidget extends StatelessWidget {
                     }),
                   );
                 } else {
-                  return Center(child: Text("No Movies found"));
+                  return const Center(child: Text("No Movies found"));
                 }
               }
             },

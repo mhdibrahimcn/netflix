@@ -55,7 +55,7 @@ class BackgroundCard extends StatelessWidget {
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.easeInOut,
                   width: double.infinity,
-                  height: 0.83 * size.height,
+                  height: 0.80 * size.height,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -89,9 +89,8 @@ class BackgroundCard extends StatelessWidget {
                         if (value! % 1 == 0) {
                           final String newImagePath =
                               '$imageAppendUrl${homeResultList[customCarouselController.currentIndex.value].posterPath}';
-                          Future.delayed(const Duration(milliseconds: 200), () {
-                            paletteController.generatePalette(newImagePath);
-                          });
+
+                          paletteController.generatePalette(newImagePath);
                         }
                       },
                       onPageChanged: (index, reason) {

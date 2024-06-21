@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/search/widget/search_text_title_widget.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchIdle extends StatelessWidget {
   const SearchIdle({super.key});
@@ -64,7 +63,8 @@ class TopSearchItemTile extends StatelessWidget {
           height: screenHeight * 0.1,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(imageUrl))),
+                  fit: BoxFit.cover,
+                  image: CachedNetworkImageProvider(imageUrl))),
         ),
         kwidth,
         Expanded(
