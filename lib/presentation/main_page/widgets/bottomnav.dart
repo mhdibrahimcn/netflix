@@ -10,6 +10,7 @@ class BottomNavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final iconSize = size.width * 0.056;
     return ValueListenableBuilder<int>(
       valueListenable: selectedIndexNotifier,
       builder: (context, selectedIndex, child) {
@@ -25,8 +26,8 @@ class BottomNavigationWidget extends StatelessWidget {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: SizedBox(
-                  width: size.width * 0.8,
-                  height: size.height * 0.07,
+                  width: size.width * 0.73,
+                  height: size.height * 0.05,
                   child: BottomNavigationBar(
                     currentIndex: selectedIndex,
                     onTap: (value) {
@@ -37,40 +38,37 @@ class BottomNavigationWidget extends StatelessWidget {
                     unselectedItemColor: Colors.grey,
                     showSelectedLabels: false,
                     showUnselectedLabels: false,
-                    selectedIconTheme: const IconThemeData(color: Colors.white),
-                    unselectedIconTheme:
-                        const IconThemeData(color: Colors.grey),
-                    items: const [
+                    items: [
                       BottomNavigationBarItem(
                           backgroundColor: Colors.transparent,
                           icon: Icon(
                             Icons.home,
-                            size: 20,
+                            size: iconSize,
                           ),
                           label: "Home"),
                       BottomNavigationBarItem(
                           icon: Icon(
                             Icons.collections,
-                            size: 20,
+                            size: iconSize,
                           ),
                           label: "New & Hot,  size: 15,"),
                       BottomNavigationBarItem(
                         icon: Icon(
                           Icons.emoji_emotions,
-                          size: 20,
+                          size: iconSize,
                         ),
                         label: "Fast Laughs",
                       ),
                       BottomNavigationBarItem(
                           icon: Icon(
                             Icons.search,
-                            size: 20,
+                            size: iconSize,
                           ),
                           label: "Search"),
                       BottomNavigationBarItem(
                           icon: Icon(
                             Icons.download,
-                            size: 20,
+                            size: iconSize,
                           ),
                           label: "Downloads"),
                     ],

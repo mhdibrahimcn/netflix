@@ -14,9 +14,14 @@ class EveryonesWatchingCard extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(8.0),
       child: Column(children: [
-        TitleAndDescrptionWidget(),
+        TitleAndDescriptionWidget(
+          title: '',
+          overview: '',
+        ),
         kheight,
-        VideoWidget(),
+        VideoWidget(
+          backdropPath: "u",
+        ),
         kheight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

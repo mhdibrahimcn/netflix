@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/application/home/home_bloc.dart';
+import 'package:netflix/application/new&hot/new_and_hot_bloc.dart';
 import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/domain/core/di/injectable.dart';
@@ -30,6 +31,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<HomeBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<NewAndHotBloc>(),
         ),
       ],
       child: MaterialApp(

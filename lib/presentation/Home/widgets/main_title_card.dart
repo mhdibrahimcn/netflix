@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/widgets/main_card.dart';
 import 'package:netflix/presentation/widgets/main_title.dart';
-
-import 'package:shimmer/shimmer.dart'; // Import the shimmer package
+import 'package:shimmer/shimmer.dart';
 
 class MainTitleCard extends StatelessWidget {
   const MainTitleCard({
@@ -14,15 +11,14 @@ class MainTitleCard extends StatelessWidget {
     required this.isLoading,
   });
 
-  final List posterMovieList;
+  final List<String> posterMovieList;
   final String title;
   final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
-    // Get the current date and format it
+    ScrollController scrollController = ScrollController();
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -30,45 +26,86 @@ class MainTitleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MainTitle(title: title),
-          kheight,
+          const SizedBox(height: 10),
           LimitedBox(
             maxHeight: size.height * 0.24,
             child: isLoading
-                ? ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
-                      child: Container(
-                        width: size.width * 0.35,
-                        height: size.height * 0.24,
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                    ),
-                    separatorBuilder: (context, index) => kwidth15,
-                    itemCount: 5,
-                  )
-                : ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      // Append the current date to the poster URL
-                      final String posterUrl = posterMovieList[index];
-
-                      return MainCard(
-                        size: size,
-                        posterUrl: posterUrl,
-                      );
-                    },
-                    separatorBuilder: (context, index) => kwidth15,
-                    itemCount: posterMovieList.length,
-                  ),
+                ? _buildLoadingList(size)
+                : _buildPosterList(size, scrollController),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildLoadingList(Size size) {
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) => Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: Container(
+          width: size.width * 0.35,
+          height: size.height * 0.24,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+      ),
+      separatorBuilder: (context, index) => const SizedBox(width: 15),
+      itemCount: 5,
+    );
+  }
+
+  Widget _buildPosterList(Size size, ScrollController scrollController) {
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      controller: scrollController,
+      itemBuilder: (context, index) {
+        return AnimatedBuilder(
+          animation: scrollController,
+          builder: (context, child) {
+            double offset = scrollController.offset;
+            double itemPosition = index * (size.width * 0.35 + 15);
+            double itemWidth = size.width * 0.35;
+            double viewportCenter = offset + size.width / 2;
+            double itemCenter = itemPosition + itemWidth / 2;
+            double distanceFromCenter = (viewportCenter - itemCenter).abs();
+            double shrinkFactor = 1.0;
+
+            // Calculate shrink factor based on distance from center
+            if (distanceFromCenter < size.width * 0.35 / 2) {
+              shrinkFactor = 1.0;
+            } else {
+              shrinkFactor = 1.0 -
+                  ((distanceFromCenter - size.width * 0.35 / 2) /
+                      size.width *
+                      0.35);
+              if (shrinkFactor < 0.5) {
+                shrinkFactor = 0.5;
+              }
+            }
+
+            return Transform.scale(
+              scale: shrinkFactor,
+              alignment: Alignment.center,
+              child: MainCard(
+                size: size,
+                posterUrl: posterMovieList[index],
+              ),
+            );
+          },
+          child: MainCard(
+            size: size,
+            posterUrl: posterMovieList[index],
+          ),
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(width: 15),
+      itemCount: posterMovieList.length,
     );
   }
 }

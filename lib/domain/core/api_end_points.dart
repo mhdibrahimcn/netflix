@@ -9,4 +9,6 @@ class ApiEndPoints {
   static const homeTvShows = '$kBaseUrl/tv/top_rated?api_key=$apiKey';
   static const homeDrama =
       '$kBaseUrl/discover/movie?api_key=$apiKey&with_genres=18&sort_by=popularity.desc&vote_average.gte=7';
+  static const everyOneWatching = "$kBaseUrl/trending/all/week?api_key=$apiKey";
+  static const upcomingMovies = "$kBaseUrl/movie/upcoming?api_key=$apiKey";
 }

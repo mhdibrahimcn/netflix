@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
 
-class TitleAndDescrptionWidget extends StatelessWidget {
-  const TitleAndDescrptionWidget({
+class TitleAndDescriptionWidget extends StatelessWidget {
+  final String title, overview;
+  const TitleAndDescriptionWidget({
     super.key,
+    required this.title,
+    required this.overview,
   });
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "The Batman",
+          title,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: size.width * 0.05,
             color: Colors.grey[300],
             fontWeight: FontWeight.w900,
           ),
         ),
         Text(
-          "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
-          style:
-              TextStyle(fontWeight: FontWeight.w900, color: Colors.grey[500]),
+          overview,
+          style: TextStyle(
+              fontWeight: FontWeight.w900,
+              color: Colors.grey[500],
+              fontSize: size.width * 0.036),
         )
       ],
     );

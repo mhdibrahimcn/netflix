@@ -1,8 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constants.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String backdropPath;
   const VideoWidget({
     super.key,
+    required this.backdropPath,
   });
 
   @override
@@ -12,12 +16,12 @@ class VideoWidget extends StatelessWidget {
       children: [
         Container(
           width: size.width,
-          height: size.height * 0.23,
-          decoration: const BoxDecoration(
+          height: size.height * 0.24,
+          decoration: BoxDecoration(
+              borderRadius: kRadius20,
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      "https://media.themoviedb.org/t/p/w533_and_h300_bestv2/IYUD7rAIXzBM91TT3Z5fILUS7n.jpg"))),
+                  image: CachedNetworkImageProvider(backdropPath))),
         ),
         Positioned(
           bottom: 10,

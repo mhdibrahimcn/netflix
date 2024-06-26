@@ -19,9 +19,9 @@ class ScreenHome extends StatelessWidget {
       BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeLatest());
     });
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ));
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.transparent));
     final PaletteController paletteController = Get.put(PaletteController());
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -56,7 +56,7 @@ class ScreenHome extends StatelessWidget {
             }),
             ScrollablePositionedList.builder(
               itemCount:
-                  5, // Adjust according to the number of items in the list
+                  6, // Adjust according to the number of items in the list
               itemBuilder: (context, index) {
                 switch (index) {
                   case 0:
@@ -96,6 +96,10 @@ class ScreenHome extends StatelessWidget {
                       );
                     }
                     return Container();
+                  case 5:
+                    return const SizedBox(
+                      height: 60,
+                    );
                   default:
                     return Container();
                 }

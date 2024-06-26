@@ -1,89 +1,133 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:netflix/application/new&hot/controlller/palette_new_and_hot_contoller.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
 import 'package:netflix/presentation/new&hot/widgets/title_and_description_widget.dart';
 import 'package:netflix/presentation/new&hot/widgets/video_widget.dart';
 
 class NewsAndHotCard extends StatelessWidget {
+  final String month, day, backdropPath, title, overview, dayName;
+
   const NewsAndHotCard({
     super.key,
+    required this.month,
+    required this.backdropPath,
+    required this.title,
+    required this.overview,
+    required this.day,
+    required this.dayName,
   });
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final PaletteControllerHotAndNew paletteController =
+        Get.put(PaletteControllerHotAndNew());
+    paletteController.generatePalette('$imageAppendUrl$backdropPath');
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: [
-          SizedBox(
-            width: size.width * 0.14,
-            height: size.height * 0.5,
-            child: Column(
-              children: [
-                Text(
-                  "FEB",
-                  style: TextStyle(color: Colors.grey[300]),
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Stack(
+          children: [
+            Obx(() {
+              final sideColors =
+                  paletteController.getPalette('$imageAppendUrl$backdropPath');
+              if (sideColors.isEmpty) {
+                return Container(
+                  height: size.height * 0.3,
+                  color: Colors.black, // Default color when sideColors is empty
+                );
+              }
+              return Container(
+                height: size.height * 0.5,
+                decoration: BoxDecoration(
+                  borderRadius: kRadius20,
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      sideColors[1], // Bottom color from image
+                      Colors.black
+                    ],
+                    stops: const [0.0, 1],
+                  ),
                 ),
-                const Text(
-                  "15",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 5),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            width: size.width - 60,
-            height: size.height * 0.5,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                VideoWidget(),
-                kheight,
-                const Row(
+              );
+            }),
+            Row(children: [
+              SizedBox(
+                width: size.width * 0.12,
+                height: size.height * 0.5,
+                child: Column(
                   children: [
-                    Expanded(
-                      child: Text(
-                        "The Batman",
-                        style: TextStyle(
-                            fontSize: 35,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: -4),
-                      ),
+                    Text(
+                      month,
+                      style: TextStyle(color: Colors.grey[300]),
                     ),
-                    CustomButtonWidget(
-                      icon: Icons.notifications_none,
-                      label: "Remind Me",
-                      iconSize: 25,
-                      textSize: 11,
-                    ),
-                    kwidth20,
-                    CustomButtonWidget(
-                      icon: Icons.info_outline,
-                      label: "Info",
-                      iconSize: 25,
-                      textSize: 11,
-                    ),
-                    kwidth,
+                    Text(
+                      day,
+                      style: TextStyle(
+                          fontSize: size.width * 0.07,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 4),
+                    )
                   ],
                 ),
-                Text(
-                  "Coming on Friday",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey[300]),
+              ),
+              SizedBox(
+                width: size.width - 70,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    kheight20,
+                    VideoWidget(
+                      backdropPath: '$imageAppendUrl$backdropPath',
+                    ),
+                    kheight,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                                fontSize: size.width * 0.09,
+                                fontWeight: FontWeight.w900,
+                                height: size.width * 0.0027,
+                                letterSpacing: -3),
+                          ),
+                        ),
+                        const CustomButtonWidget(
+                          icon: Icons.notifications_none,
+                          label: "Remind Me",
+                          iconSize: 25,
+                          textSize: 11,
+                        ),
+                        kwidth20,
+                        const CustomButtonWidget(
+                          icon: Icons.info_outline,
+                          label: "Info",
+                          iconSize: 25,
+                          textSize: 11,
+                        ),
+                        kwidth,
+                      ],
+                    ),
+                    Text(
+                      "Coming on $dayName",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w900, color: Colors.grey[300]),
+                    ),
+                    kheight,
+                    TitleAndDescriptionWidget(
+                      title: title,
+                      overview: overview,
+                    ),
+                  ],
                 ),
-                kheight,
-                TitleAndDescrptionWidget(),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+              ),
+            ]),
+          ],
+        ));
   }
 }
