@@ -77,7 +77,7 @@ class ScreenNewAndHot extends StatelessWidget {
         } else if (state.upcomingMovieList.isNotEmpty) {
           return ListView.builder(
             shrinkWrap: true,
-            itemCount: 10,
+            itemCount: state.upcomingMovieList.length,
             itemBuilder: (context, index) {
               final upcomingMovie = state.upcomingMovieList[index];
 
@@ -112,9 +112,40 @@ class ScreenNewAndHot extends StatelessWidget {
   }
 
   Widget _buildEveryoneisWatching(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemBuilder: (context, index) => const EveryonesWatchingCard(),
-        itemCount: 10);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<NewAndHotBloc>(context).add(
+        const NewAndHotEvent.getEveryoneWatchingMovieData(),
+      );
+    });
+
+    return BlocBuilder<NewAndHotBloc, NewAndHotState>(
+      builder: (context, state) {
+        if (state.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state.everyoneWatchingList.isNotEmpty) {
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: state.everyoneWatchingList.length,
+            itemBuilder: (context, index) {
+              final everyoneWatchingList = state.everyoneWatchingList[index];
+
+              return EveryonesWatchingCard(
+                backdropPath: everyoneWatchingList.backdropPath!,
+                title: everyoneWatchingList.name!,
+                overview: everyoneWatchingList.overview!,
+              );
+            },
+          );
+        } else if (state.isError) {
+          return const Center(
+            child: Text('Failed to load data'),
+          );
+        } else {
+          return Container();
+        }
+      },
+    );
   }
 }

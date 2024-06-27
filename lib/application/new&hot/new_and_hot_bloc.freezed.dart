@@ -16,44 +16,46 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewAndHotEvent {
-  dynamic get startDate => throw _privateConstructorUsedError;
-  dynamic get endDate => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic startDate, dynamic endDate)
-        getUpcomingMovieData,
+    required TResult Function() getUpcomingMovieData,
+    required TResult Function() getEveryoneWatchingMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic startDate, dynamic endDate)? getUpcomingMovieData,
+    TResult? Function()? getUpcomingMovieData,
+    TResult? Function()? getEveryoneWatchingMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic startDate, dynamic endDate)? getUpcomingMovieData,
+    TResult Function()? getUpcomingMovieData,
+    TResult Function()? getEveryoneWatchingMovieData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetUpcomingMovieData value) getUpcomingMovieData,
+    required TResult Function(GetEveryoneWatchingMovieData value)
+        getEveryoneWatchingMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetUpcomingMovieData value)? getUpcomingMovieData,
+    TResult? Function(GetEveryoneWatchingMovieData value)?
+        getEveryoneWatchingMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetUpcomingMovieData value)? getUpcomingMovieData,
+    TResult Function(GetEveryoneWatchingMovieData value)?
+        getEveryoneWatchingMovieData,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $NewAndHotEventCopyWith<NewAndHotEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +64,6 @@ abstract class $NewAndHotEventCopyWith<$Res> {
   factory $NewAndHotEventCopyWith(
           NewAndHotEvent value, $Res Function(NewAndHotEvent) then) =
       _$NewAndHotEventCopyWithImpl<$Res, NewAndHotEvent>;
-  @useResult
-  $Res call({dynamic startDate, dynamic endDate});
 }
 
 /// @nodoc
@@ -75,35 +75,13 @@ class _$NewAndHotEventCopyWithImpl<$Res, $Val extends NewAndHotEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-  }) {
-    return _then(_value.copyWith(
-      startDate: freezed == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      endDate: freezed == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetUpcomingMovieDataImplCopyWith<$Res>
-    implements $NewAndHotEventCopyWith<$Res> {
+abstract class _$$GetUpcomingMovieDataImplCopyWith<$Res> {
   factory _$$GetUpcomingMovieDataImplCopyWith(_$GetUpcomingMovieDataImpl value,
           $Res Function(_$GetUpcomingMovieDataImpl) then) =
       __$$GetUpcomingMovieDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({dynamic startDate, dynamic endDate});
 }
 
 /// @nodoc
@@ -113,83 +91,55 @@ class __$$GetUpcomingMovieDataImplCopyWithImpl<$Res>
   __$$GetUpcomingMovieDataImplCopyWithImpl(_$GetUpcomingMovieDataImpl _value,
       $Res Function(_$GetUpcomingMovieDataImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-  }) {
-    return _then(_$GetUpcomingMovieDataImpl(
-      startDate: freezed == startDate ? _value.startDate! : startDate,
-      endDate: freezed == endDate ? _value.endDate! : endDate,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$GetUpcomingMovieDataImpl implements GetUpcomingMovieData {
-  const _$GetUpcomingMovieDataImpl({this.startDate, this.endDate});
-
-  @override
-  final dynamic startDate;
-  @override
-  final dynamic endDate;
+  const _$GetUpcomingMovieDataImpl();
 
   @override
   String toString() {
-    return 'NewAndHotEvent.getUpcomingMovieData(startDate: $startDate, endDate: $endDate)';
+    return 'NewAndHotEvent.getUpcomingMovieData()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetUpcomingMovieDataImpl &&
-            const DeepCollectionEquality().equals(other.startDate, startDate) &&
-            const DeepCollectionEquality().equals(other.endDate, endDate));
+            other is _$GetUpcomingMovieDataImpl);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(startDate),
-      const DeepCollectionEquality().hash(endDate));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetUpcomingMovieDataImplCopyWith<_$GetUpcomingMovieDataImpl>
-      get copyWith =>
-          __$$GetUpcomingMovieDataImplCopyWithImpl<_$GetUpcomingMovieDataImpl>(
-              this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic startDate, dynamic endDate)
-        getUpcomingMovieData,
+    required TResult Function() getUpcomingMovieData,
+    required TResult Function() getEveryoneWatchingMovieData,
   }) {
-    return getUpcomingMovieData(startDate, endDate);
+    return getUpcomingMovieData();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic startDate, dynamic endDate)? getUpcomingMovieData,
+    TResult? Function()? getUpcomingMovieData,
+    TResult? Function()? getEveryoneWatchingMovieData,
   }) {
-    return getUpcomingMovieData?.call(startDate, endDate);
+    return getUpcomingMovieData?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic startDate, dynamic endDate)? getUpcomingMovieData,
+    TResult Function()? getUpcomingMovieData,
+    TResult Function()? getEveryoneWatchingMovieData,
     required TResult orElse(),
   }) {
     if (getUpcomingMovieData != null) {
-      return getUpcomingMovieData(startDate, endDate);
+      return getUpcomingMovieData();
     }
     return orElse();
   }
@@ -198,6 +148,8 @@ class _$GetUpcomingMovieDataImpl implements GetUpcomingMovieData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetUpcomingMovieData value) getUpcomingMovieData,
+    required TResult Function(GetEveryoneWatchingMovieData value)
+        getEveryoneWatchingMovieData,
   }) {
     return getUpcomingMovieData(this);
   }
@@ -206,6 +158,8 @@ class _$GetUpcomingMovieDataImpl implements GetUpcomingMovieData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetUpcomingMovieData value)? getUpcomingMovieData,
+    TResult? Function(GetEveryoneWatchingMovieData value)?
+        getEveryoneWatchingMovieData,
   }) {
     return getUpcomingMovieData?.call(this);
   }
@@ -214,6 +168,8 @@ class _$GetUpcomingMovieDataImpl implements GetUpcomingMovieData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetUpcomingMovieData value)? getUpcomingMovieData,
+    TResult Function(GetEveryoneWatchingMovieData value)?
+        getEveryoneWatchingMovieData,
     required TResult orElse(),
   }) {
     if (getUpcomingMovieData != null) {
@@ -224,18 +180,118 @@ class _$GetUpcomingMovieDataImpl implements GetUpcomingMovieData {
 }
 
 abstract class GetUpcomingMovieData implements NewAndHotEvent {
-  const factory GetUpcomingMovieData(
-      {final dynamic startDate,
-      final dynamic endDate}) = _$GetUpcomingMovieDataImpl;
+  const factory GetUpcomingMovieData() = _$GetUpcomingMovieDataImpl;
+}
+
+/// @nodoc
+abstract class _$$GetEveryoneWatchingMovieDataImplCopyWith<$Res> {
+  factory _$$GetEveryoneWatchingMovieDataImplCopyWith(
+          _$GetEveryoneWatchingMovieDataImpl value,
+          $Res Function(_$GetEveryoneWatchingMovieDataImpl) then) =
+      __$$GetEveryoneWatchingMovieDataImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetEveryoneWatchingMovieDataImplCopyWithImpl<$Res>
+    extends _$NewAndHotEventCopyWithImpl<$Res,
+        _$GetEveryoneWatchingMovieDataImpl>
+    implements _$$GetEveryoneWatchingMovieDataImplCopyWith<$Res> {
+  __$$GetEveryoneWatchingMovieDataImplCopyWithImpl(
+      _$GetEveryoneWatchingMovieDataImpl _value,
+      $Res Function(_$GetEveryoneWatchingMovieDataImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetEveryoneWatchingMovieDataImpl
+    implements GetEveryoneWatchingMovieData {
+  const _$GetEveryoneWatchingMovieDataImpl();
 
   @override
-  dynamic get startDate;
+  String toString() {
+    return 'NewAndHotEvent.getEveryoneWatchingMovieData()';
+  }
+
   @override
-  dynamic get endDate;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetEveryoneWatchingMovieDataImpl);
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$GetUpcomingMovieDataImplCopyWith<_$GetUpcomingMovieDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUpcomingMovieData,
+    required TResult Function() getEveryoneWatchingMovieData,
+  }) {
+    return getEveryoneWatchingMovieData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUpcomingMovieData,
+    TResult? Function()? getEveryoneWatchingMovieData,
+  }) {
+    return getEveryoneWatchingMovieData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUpcomingMovieData,
+    TResult Function()? getEveryoneWatchingMovieData,
+    required TResult orElse(),
+  }) {
+    if (getEveryoneWatchingMovieData != null) {
+      return getEveryoneWatchingMovieData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetUpcomingMovieData value) getUpcomingMovieData,
+    required TResult Function(GetEveryoneWatchingMovieData value)
+        getEveryoneWatchingMovieData,
+  }) {
+    return getEveryoneWatchingMovieData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetUpcomingMovieData value)? getUpcomingMovieData,
+    TResult? Function(GetEveryoneWatchingMovieData value)?
+        getEveryoneWatchingMovieData,
+  }) {
+    return getEveryoneWatchingMovieData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetUpcomingMovieData value)? getUpcomingMovieData,
+    TResult Function(GetEveryoneWatchingMovieData value)?
+        getEveryoneWatchingMovieData,
+    required TResult orElse(),
+  }) {
+    if (getEveryoneWatchingMovieData != null) {
+      return getEveryoneWatchingMovieData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetEveryoneWatchingMovieData implements NewAndHotEvent {
+  const factory GetEveryoneWatchingMovieData() =
+      _$GetEveryoneWatchingMovieDataImpl;
 }
 
 /// @nodoc
@@ -243,6 +299,8 @@ mixin _$NewAndHotState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   List<UpcomingMovieResults> get upcomingMovieList =>
+      throw _privateConstructorUsedError;
+  List<EveryoneWatchingResult> get everyoneWatchingList =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -259,7 +317,8 @@ abstract class $NewAndHotStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isError,
-      List<UpcomingMovieResults> upcomingMovieList});
+      List<UpcomingMovieResults> upcomingMovieList,
+      List<EveryoneWatchingResult> everyoneWatchingList});
 }
 
 /// @nodoc
@@ -278,6 +337,7 @@ class _$NewAndHotStateCopyWithImpl<$Res, $Val extends NewAndHotState>
     Object? isLoading = null,
     Object? isError = null,
     Object? upcomingMovieList = null,
+    Object? everyoneWatchingList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -292,6 +352,10 @@ class _$NewAndHotStateCopyWithImpl<$Res, $Val extends NewAndHotState>
           ? _value.upcomingMovieList
           : upcomingMovieList // ignore: cast_nullable_to_non_nullable
               as List<UpcomingMovieResults>,
+      everyoneWatchingList: null == everyoneWatchingList
+          ? _value.everyoneWatchingList
+          : everyoneWatchingList // ignore: cast_nullable_to_non_nullable
+              as List<EveryoneWatchingResult>,
     ) as $Val);
   }
 }
@@ -307,7 +371,8 @@ abstract class _$$NewAndHotStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isError,
-      List<UpcomingMovieResults> upcomingMovieList});
+      List<UpcomingMovieResults> upcomingMovieList,
+      List<EveryoneWatchingResult> everyoneWatchingList});
 }
 
 /// @nodoc
@@ -324,6 +389,7 @@ class __$$NewAndHotStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? isError = null,
     Object? upcomingMovieList = null,
+    Object? everyoneWatchingList = null,
   }) {
     return _then(_$NewAndHotStateImpl(
       isLoading: null == isLoading
@@ -338,6 +404,10 @@ class __$$NewAndHotStateImplCopyWithImpl<$Res>
           ? _value._upcomingMovieList
           : upcomingMovieList // ignore: cast_nullable_to_non_nullable
               as List<UpcomingMovieResults>,
+      everyoneWatchingList: null == everyoneWatchingList
+          ? _value._everyoneWatchingList
+          : everyoneWatchingList // ignore: cast_nullable_to_non_nullable
+              as List<EveryoneWatchingResult>,
     ));
   }
 }
@@ -348,8 +418,10 @@ class _$NewAndHotStateImpl implements _NewAndHotState {
   const _$NewAndHotStateImpl(
       {required this.isLoading,
       required this.isError,
-      required final List<UpcomingMovieResults> upcomingMovieList})
-      : _upcomingMovieList = upcomingMovieList;
+      required final List<UpcomingMovieResults> upcomingMovieList,
+      required final List<EveryoneWatchingResult> everyoneWatchingList})
+      : _upcomingMovieList = upcomingMovieList,
+        _everyoneWatchingList = everyoneWatchingList;
 
   @override
   final bool isLoading;
@@ -364,9 +436,18 @@ class _$NewAndHotStateImpl implements _NewAndHotState {
     return EqualUnmodifiableListView(_upcomingMovieList);
   }
 
+  final List<EveryoneWatchingResult> _everyoneWatchingList;
+  @override
+  List<EveryoneWatchingResult> get everyoneWatchingList {
+    if (_everyoneWatchingList is EqualUnmodifiableListView)
+      return _everyoneWatchingList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_everyoneWatchingList);
+  }
+
   @override
   String toString() {
-    return 'NewAndHotState(isLoading: $isLoading, isError: $isError, upcomingMovieList: $upcomingMovieList)';
+    return 'NewAndHotState(isLoading: $isLoading, isError: $isError, upcomingMovieList: $upcomingMovieList, everyoneWatchingList: $everyoneWatchingList)';
   }
 
   @override
@@ -378,12 +459,18 @@ class _$NewAndHotStateImpl implements _NewAndHotState {
                 other.isLoading == isLoading) &&
             (identical(other.isError, isError) || other.isError == isError) &&
             const DeepCollectionEquality()
-                .equals(other._upcomingMovieList, _upcomingMovieList));
+                .equals(other._upcomingMovieList, _upcomingMovieList) &&
+            const DeepCollectionEquality()
+                .equals(other._everyoneWatchingList, _everyoneWatchingList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isError,
-      const DeepCollectionEquality().hash(_upcomingMovieList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isError,
+      const DeepCollectionEquality().hash(_upcomingMovieList),
+      const DeepCollectionEquality().hash(_everyoneWatchingList));
 
   @JsonKey(ignore: true)
   @override
@@ -397,7 +484,8 @@ abstract class _NewAndHotState implements NewAndHotState {
   const factory _NewAndHotState(
           {required final bool isLoading,
           required final bool isError,
-          required final List<UpcomingMovieResults> upcomingMovieList}) =
+          required final List<UpcomingMovieResults> upcomingMovieList,
+          required final List<EveryoneWatchingResult> everyoneWatchingList}) =
       _$NewAndHotStateImpl;
 
   @override
@@ -406,6 +494,8 @@ abstract class _NewAndHotState implements NewAndHotState {
   bool get isError;
   @override
   List<UpcomingMovieResults> get upcomingMovieList;
+  @override
+  List<EveryoneWatchingResult> get everyoneWatchingList;
   @override
   @JsonKey(ignore: true)
   _$$NewAndHotStateImplCopyWith<_$NewAndHotStateImpl> get copyWith =>

@@ -91,7 +91,7 @@ class NewsAndHotCard extends StatelessWidget {
                           child: Text(
                             title,
                             style: TextStyle(
-                                fontSize: size.width * 0.09,
+                                fontSize: size.width * 0.08,
                                 fontWeight: FontWeight.w900,
                                 height: size.width * 0.0027,
                                 letterSpacing: -3),
