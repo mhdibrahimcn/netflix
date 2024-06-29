@@ -17,10 +17,6 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
 
   NewAndHotBloc(this._hotAndNewMovieService) : super(NewAndHotState.initial()) {
     on<GetUpcomingMovieData>((event, emit) async {
-      if (state.upcomingMovieList.isNotEmpty) {
-        emit(state.copyWith(upcomingMovieList: state.upcomingMovieList));
-      }
-
       final upcomingMovieList =
           await _hotAndNewMovieService.getUpcomingMovieData();
       emit(upcomingMovieList.fold(
@@ -62,7 +58,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
 
           return state.copyWith(
             isLoading: false,
-            isError: true,
+            isError: false,
             everyoneWatchingList: shuffledList,
           );
         }));

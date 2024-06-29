@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:netflix/application/new&hot/new_and_hot_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
@@ -66,6 +67,7 @@ class ScreenNewAndHot extends StatelessWidget {
         const NewAndHotEvent.getUpcomingMovieData(),
       );
     });
+    final Size size = MediaQuery.of(context).size;
 
     return BlocBuilder<NewAndHotBloc, NewAndHotState>(
       builder: (context, state) {
@@ -75,30 +77,42 @@ class ScreenNewAndHot extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state.upcomingMovieList.isNotEmpty) {
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: state.upcomingMovieList.length,
-            itemBuilder: (context, index) {
-              final upcomingMovie = state.upcomingMovieList[index];
-
-              // Parse and format release date
-              DateTime releaseDate = DateTime.parse(upcomingMovie.releaseDate!);
-              String monthAbbreviation = DateFormat('MMM')
-                  .format(releaseDate); // Get month abbreviation (e.g., Feb)
-              String dayOfMonth = DateFormat('dd')
-                  .format(releaseDate); // Get day of month (e.g., 12)
-              String dayName = DateFormat.EEEE()
-                  .format(releaseDate); // Get full day name (e.g., Monday)
-
-              return NewsAndHotCard(
-                month: monthAbbreviation,
-                day: dayOfMonth,
-                backdropPath: upcomingMovie.backdropPath!,
-                title: upcomingMovie.title!,
-                overview: upcomingMovie.overview!,
-                dayName: dayName,
+          return LiquidPullToRefresh(
+            onRefresh: () async {
+              BlocProvider.of<NewAndHotBloc>(context).add(
+                const NewAndHotEvent.getEveryoneWatchingMovieData(),
               );
             },
+            showChildOpacityTransition: false,
+            height: size.height * 0.2,
+            animSpeedFactor: 2.0,
+            borderWidth: 10,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: state.upcomingMovieList.length,
+              itemBuilder: (context, index) {
+                final upcomingMovie = state.upcomingMovieList[index];
+
+                // Parse and format release date
+                DateTime releaseDate =
+                    DateTime.parse(upcomingMovie.releaseDate!);
+                String monthAbbreviation = DateFormat('MMM')
+                    .format(releaseDate); // Get month abbreviation (e.g., Feb)
+                String dayOfMonth = DateFormat('dd')
+                    .format(releaseDate); // Get day of month (e.g., 12)
+                String dayName = DateFormat.EEEE()
+                    .format(releaseDate); // Get full day name (e.g., Monday)
+
+                return NewsAndHotCard(
+                  month: monthAbbreviation,
+                  day: dayOfMonth,
+                  backdropPath: upcomingMovie.backdropPath!,
+                  title: upcomingMovie.title!,
+                  overview: upcomingMovie.overview!,
+                  dayName: dayName,
+                );
+              },
+            ),
           );
         } else if (state.isError) {
           return const Center(
@@ -117,7 +131,7 @@ class ScreenNewAndHot extends StatelessWidget {
         const NewAndHotEvent.getEveryoneWatchingMovieData(),
       );
     });
-
+    final Size size = MediaQuery.of(context).size;
     return BlocBuilder<NewAndHotBloc, NewAndHotState>(
       builder: (context, state) {
         if (state.isLoading) {
@@ -125,18 +139,29 @@ class ScreenNewAndHot extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state.everyoneWatchingList.isNotEmpty) {
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: state.everyoneWatchingList.length,
-            itemBuilder: (context, index) {
-              final everyoneWatchingList = state.everyoneWatchingList[index];
-
-              return EveryonesWatchingCard(
-                backdropPath: everyoneWatchingList.backdropPath!,
-                title: everyoneWatchingList.name!,
-                overview: everyoneWatchingList.overview!,
+          return LiquidPullToRefresh(
+            onRefresh: () async {
+              BlocProvider.of<NewAndHotBloc>(context).add(
+                const NewAndHotEvent.getEveryoneWatchingMovieData(),
               );
             },
+            showChildOpacityTransition: false,
+            height: size.height * 0.17,
+            animSpeedFactor: 2.0,
+            borderWidth: 10,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: state.everyoneWatchingList.length,
+              itemBuilder: (context, index) {
+                final everyoneWatchingList = state.everyoneWatchingList[index];
+
+                return EveryonesWatchingCard(
+                  backdropPath: everyoneWatchingList.backdropPath!,
+                  title: everyoneWatchingList.name!,
+                  overview: everyoneWatchingList.overview!,
+                );
+              },
+            ),
           );
         } else if (state.isError) {
           return const Center(

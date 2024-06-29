@@ -10,7 +10,7 @@ class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({super.key});
   final pages = [
     const ScreenHome(),
-    ScreenNewAndHot(),
+    const ScreenNewAndHot(),
     const ScreenFastLaughs(),
     const ScreenSearch(),
     ScreenDownloads()
@@ -20,6 +20,7 @@ class ScreenMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBody: true,
+        resizeToAvoidBottomInset: false,
         body: Stack(children: [
           ValueListenableBuilder(
             valueListenable: selectedIndexNotifier,

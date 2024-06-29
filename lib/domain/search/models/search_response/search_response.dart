@@ -23,15 +23,18 @@ class SearchResultData {
   @JsonKey(name: 'id')
   int? id;
 
-  @JsonKey(name: 'original_title')
-  String? originalTitle;
+  String? title;
 
   @JsonKey(name: 'poster_path')
   String? posterPath;
 
+  @JsonKey(name: 'release_date')
+  String? releaseDate;
+
+  String? overview;
   SearchResultData({
     this.id,
-    this.originalTitle,
+    this.title,
     this.posterPath,
   });
 

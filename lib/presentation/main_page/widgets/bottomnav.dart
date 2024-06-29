@@ -47,12 +47,14 @@ class BottomNavigationWidget extends StatelessWidget {
                           ),
                           label: "Home"),
                       BottomNavigationBarItem(
+                          backgroundColor: Colors.transparent,
                           icon: Icon(
                             Icons.collections,
                             size: iconSize,
                           ),
                           label: "New & Hot,  size: 15,"),
                       BottomNavigationBarItem(
+                        backgroundColor: Colors.transparent,
                         icon: Icon(
                           Icons.emoji_emotions,
                           size: iconSize,
@@ -60,12 +62,14 @@ class BottomNavigationWidget extends StatelessWidget {
                         label: "Fast Laughs",
                       ),
                       BottomNavigationBarItem(
+                          backgroundColor: Colors.transparent,
                           icon: Icon(
                             Icons.search,
                             size: iconSize,
                           ),
                           label: "Search"),
                       BottomNavigationBarItem(
+                          backgroundColor: Colors.transparent,
                           icon: Icon(
                             Icons.download,
                             size: iconSize,

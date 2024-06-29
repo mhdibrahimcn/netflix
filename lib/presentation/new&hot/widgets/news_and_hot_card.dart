@@ -5,6 +5,7 @@ import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
 import 'package:netflix/presentation/new&hot/widgets/title_and_description_widget.dart';
 import 'package:netflix/presentation/new&hot/widgets/video_widget.dart';
+import 'package:netflix/presentation/widgets/main_movie_title.dart';
 
 class NewsAndHotCard extends StatelessWidget {
   final String month, day, backdropPath, title, overview, dayName;
@@ -88,13 +89,8 @@ class NewsAndHotCard extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Text(
-                            title,
-                            style: TextStyle(
-                                fontSize: size.width * 0.08,
-                                fontWeight: FontWeight.w900,
-                                height: size.width * 0.0027,
-                                letterSpacing: -3),
+                          child: MainMovieTitle(
+                            title: title,
                           ),
                         ),
                         const CustomButtonWidget(
