@@ -24,6 +24,9 @@ SearchResultData _$SearchResultDataFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       posterPath: json['poster_path'] as String?,
+      genreIds: (json['genre_ids'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
     )
       ..releaseDate = json['release_date'] as String?
       ..overview = json['overview'] as String?;
@@ -34,5 +37,6 @@ Map<String, dynamic> _$SearchResultDataToJson(SearchResultData instance) =>
       'title': instance.title,
       'poster_path': instance.posterPath,
       'release_date': instance.releaseDate,
+      'genre_ids': instance.genreIds,
       'overview': instance.overview,
     };

@@ -31,12 +31,12 @@ class SearchResultData {
   @JsonKey(name: 'release_date')
   String? releaseDate;
 
+  @JsonKey(name: 'genre_ids')
+  List<int>? genreIds;
+
   String? overview;
-  SearchResultData({
-    this.id,
-    this.title,
-    this.posterPath,
-  });
+
+  SearchResultData({this.id, this.title, this.posterPath, this.genreIds});
 
   factory SearchResultData.fromJson(Map<String, dynamic> json) {
     return _$SearchResultDataFromJson(json);

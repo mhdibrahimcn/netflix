@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 class MainMovieTitle extends StatelessWidget {
   final String title;
   final Color color;
-
+  final double letterSpacing;
   const MainMovieTitle({
     super.key,
     required this.title,
     this.color = Colors.white,
+    this.letterSpacing = -3,
   });
 
-  MainMovieTitle copyWith({String? newTitle, Color? newColor}) {
+  MainMovieTitle copyWith(
+      {String? newTitle, Color? newColor, double? newLetterSpacing}) {
     return MainMovieTitle(
       title: newTitle ?? title,
       color: newColor ?? color,
+      letterSpacing: newLetterSpacing ?? letterSpacing,
     );
   }
 
@@ -26,7 +29,7 @@ class MainMovieTitle extends StatelessWidget {
         fontSize: size.width * 0.08,
         fontWeight: FontWeight.w900,
         height: size.width * 0.0027,
-        letterSpacing: -3,
+        letterSpacing: letterSpacing,
         color: color,
       ),
     );
