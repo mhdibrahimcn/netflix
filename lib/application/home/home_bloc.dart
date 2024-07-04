@@ -22,33 +22,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IDownloadsRepo _downloadsService;
   HomeBloc(this._homeService, this._downloadsService)
       : super(HomeState.initial()) {
-    on<HomeBg>((event, emit) async {
-      //if home bg poster result is exists
-      if (state.homeResultList.isNotEmpty) {
-        emit(state.copyWith(
-            isLoading: false,
-            isError: false,
-            homeResultList: state.homeResultList));
-        return;
-      }
-      //initializing
-      emit(state.copyWith(isLoading: true, isError: false, homeResultList: []));
-
-      //getting from api
-      final result = await _homeService.homeBg();
-      log(result.toString());
-      emit(result.fold(
-          (MainFailure failure) => state.copyWith(
-              isLoading: false,
-              isError: true,
-              homeResultList: []), (HomeBgModel list) {
-        final homeBg = list.results;
-        homeBg.shuffle();
-        return state.copyWith(
-            isLoading: false, isError: false, homeResultList: homeBg);
-      }));
-    });
-
     //get home data
     on<HomeLatest>(
       //if state exists
@@ -56,14 +29,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         if (state.homeLatestList.isNotEmpty &
             state.homeTrendingList.isNotEmpty &
             state.homeDramaGenreList.isNotEmpty &
-            state.homeTvShowList.isNotEmpty) {
+            state.homeTvShowList.isNotEmpty &
+            state.homeResultList.isNotEmpty) {
           emit(state.copyWith(
               isLoading: false,
-              isError: false,
               homeLatestList: state.homeLatestList,
               homeTrendingList: state.homeTrendingList,
               homeTvShowList: state.homeTvShowList,
-              homeDramaGenreList: state.homeDramaGenreList));
+              homeDramaGenreList: state.homeDramaGenreList,
+              homeResultList: state.homeResultList));
           return;
         }
         //initializing
@@ -74,6 +48,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             homeTrendingList: [],
             homeDramaGenreList: [],
             homeTvShowList: []));
+
+        //getting from api
+
+        //home corossel images
+        final result = await _homeService.homeBg();
+        log(result.toString());
+        emit(result.fold(
+            (MainFailure failure) => state.copyWith(
+                isLoading: false,
+                isError: true,
+                homeResultList: []), (HomeBgModel list) {
+          final homeBg = list.results;
+          homeBg.shuffle();
+          return state.copyWith(
+              isLoading: false, isError: false, homeResultList: homeBg);
+        }));
         final latestResult = await _homeService.homeLatest();
 
         emit(latestResult.fold(

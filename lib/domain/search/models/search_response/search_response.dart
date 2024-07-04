@@ -34,6 +34,12 @@ class SearchResultData {
   @JsonKey(name: 'genre_ids')
   List<int>? genreIds;
 
+  @JsonKey(name: 'vote_average')
+  double? voteAverage;
+
+  @JsonKey(name: 'original_language')
+  String? originalLanguage;
+
   String? overview;
 
   SearchResultData({this.id, this.title, this.posterPath, this.genreIds});

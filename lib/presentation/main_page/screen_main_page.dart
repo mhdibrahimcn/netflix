@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:netflix/application/controller/back_button_controller.dart';
 import 'package:netflix/presentation/Home/screen_home.dart';
 import 'package:netflix/presentation/downloads/screen_downloads.dart';
 import 'package:netflix/presentation/fast_laughs/screen_fast_laugh.dart';
@@ -16,9 +19,24 @@ class ScreenMainPage extends StatelessWidget {
     ScreenDownloads()
   ];
 
+  final BackButtonController backButtonController =
+      Get.put(BackButtonController());
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (didPop) {
+          return;
+        }
+
+        bool shouldClose = backButtonController.shouldExit();
+        if (shouldClose) {
+          SystemNavigator.pop();
+        }
+      },
+      child: Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: false,
         body: Stack(children: [
@@ -34,6 +52,8 @@ class ScreenMainPage extends StatelessWidget {
             bottom: 3, // Adjust to move it up or down as desired
             child: BottomNavigationWidget(),
           ),
-        ]));
+        ]),
+      ),
+    );
   }
 }

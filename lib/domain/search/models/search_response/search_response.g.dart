@@ -29,6 +29,8 @@ SearchResultData _$SearchResultDataFromJson(Map<String, dynamic> json) =>
           .toList(),
     )
       ..releaseDate = json['release_date'] as String?
+      ..voteAverage = (json['vote_average'] as num?)?.toDouble()
+      ..originalLanguage = json['original_language'] as String?
       ..overview = json['overview'] as String?;
 
 Map<String, dynamic> _$SearchResultDataToJson(SearchResultData instance) =>
@@ -38,5 +40,7 @@ Map<String, dynamic> _$SearchResultDataToJson(SearchResultData instance) =>
       'poster_path': instance.posterPath,
       'release_date': instance.releaseDate,
       'genre_ids': instance.genreIds,
+      'vote_average': instance.voteAverage,
+      'original_language': instance.originalLanguage,
       'overview': instance.overview,
     };

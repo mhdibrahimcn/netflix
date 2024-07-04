@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:netflix/application/new&hot/controlller/palette_new_and_hot_contoller.dart';
+import 'package:netflix/application/controller/palette_new_and_hot_contoller.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/Home/widgets/custom_button_widget.dart';
 import 'package:netflix/presentation/new&hot/widgets/title_and_description_widget.dart';

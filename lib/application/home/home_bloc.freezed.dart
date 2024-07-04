@@ -20,21 +20,18 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() homeBg,
     required TResult Function() homeLatest,
-    required TResult Function(int index) changeCarouselIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? homeBg,
     TResult? Function()? homeLatest,
-    TResult? Function(int index)? changeCarouselIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? homeBg,
     TResult Function()? homeLatest,
-    TResult Function(int index)? changeCarouselIndex,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +39,18 @@ mixin _$HomeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(HomeBg value) homeBg,
     required TResult Function(HomeLatest value) homeLatest,
-    required TResult Function(ChangeCarouselIndex value) changeCarouselIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(HomeBg value)? homeBg,
     TResult? Function(HomeLatest value)? homeLatest,
-    TResult? Function(ChangeCarouselIndex value)? changeCarouselIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(HomeBg value)? homeBg,
     TResult Function(HomeLatest value)? homeLatest,
-    TResult Function(ChangeCarouselIndex value)? changeCarouselIndex,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +113,6 @@ class _$HomeBgImpl implements HomeBg {
   TResult when<TResult extends Object?>({
     required TResult Function() homeBg,
     required TResult Function() homeLatest,
-    required TResult Function(int index) changeCarouselIndex,
   }) {
     return homeBg();
   }
@@ -129,7 +122,6 @@ class _$HomeBgImpl implements HomeBg {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? homeBg,
     TResult? Function()? homeLatest,
-    TResult? Function(int index)? changeCarouselIndex,
   }) {
     return homeBg?.call();
   }
@@ -139,7 +131,6 @@ class _$HomeBgImpl implements HomeBg {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? homeBg,
     TResult Function()? homeLatest,
-    TResult Function(int index)? changeCarouselIndex,
     required TResult orElse(),
   }) {
     if (homeBg != null) {
@@ -153,7 +144,6 @@ class _$HomeBgImpl implements HomeBg {
   TResult map<TResult extends Object?>({
     required TResult Function(HomeBg value) homeBg,
     required TResult Function(HomeLatest value) homeLatest,
-    required TResult Function(ChangeCarouselIndex value) changeCarouselIndex,
   }) {
     return homeBg(this);
   }
@@ -163,7 +153,6 @@ class _$HomeBgImpl implements HomeBg {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(HomeBg value)? homeBg,
     TResult? Function(HomeLatest value)? homeLatest,
-    TResult? Function(ChangeCarouselIndex value)? changeCarouselIndex,
   }) {
     return homeBg?.call(this);
   }
@@ -173,7 +162,6 @@ class _$HomeBgImpl implements HomeBg {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(HomeBg value)? homeBg,
     TResult Function(HomeLatest value)? homeLatest,
-    TResult Function(ChangeCarouselIndex value)? changeCarouselIndex,
     required TResult orElse(),
   }) {
     if (homeBg != null) {
@@ -227,7 +215,6 @@ class _$HomeLatestImpl implements HomeLatest {
   TResult when<TResult extends Object?>({
     required TResult Function() homeBg,
     required TResult Function() homeLatest,
-    required TResult Function(int index) changeCarouselIndex,
   }) {
     return homeLatest();
   }
@@ -237,7 +224,6 @@ class _$HomeLatestImpl implements HomeLatest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? homeBg,
     TResult? Function()? homeLatest,
-    TResult? Function(int index)? changeCarouselIndex,
   }) {
     return homeLatest?.call();
   }
@@ -247,7 +233,6 @@ class _$HomeLatestImpl implements HomeLatest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? homeBg,
     TResult Function()? homeLatest,
-    TResult Function(int index)? changeCarouselIndex,
     required TResult orElse(),
   }) {
     if (homeLatest != null) {
@@ -261,7 +246,6 @@ class _$HomeLatestImpl implements HomeLatest {
   TResult map<TResult extends Object?>({
     required TResult Function(HomeBg value) homeBg,
     required TResult Function(HomeLatest value) homeLatest,
-    required TResult Function(ChangeCarouselIndex value) changeCarouselIndex,
   }) {
     return homeLatest(this);
   }
@@ -271,7 +255,6 @@ class _$HomeLatestImpl implements HomeLatest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(HomeBg value)? homeBg,
     TResult? Function(HomeLatest value)? homeLatest,
-    TResult? Function(ChangeCarouselIndex value)? changeCarouselIndex,
   }) {
     return homeLatest?.call(this);
   }
@@ -281,7 +264,6 @@ class _$HomeLatestImpl implements HomeLatest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(HomeBg value)? homeBg,
     TResult Function(HomeLatest value)? homeLatest,
-    TResult Function(ChangeCarouselIndex value)? changeCarouselIndex,
     required TResult orElse(),
   }) {
     if (homeLatest != null) {
@@ -293,147 +275,6 @@ class _$HomeLatestImpl implements HomeLatest {
 
 abstract class HomeLatest implements HomeEvent {
   const factory HomeLatest() = _$HomeLatestImpl;
-}
-
-/// @nodoc
-abstract class _$$ChangeCarouselIndexImplCopyWith<$Res> {
-  factory _$$ChangeCarouselIndexImplCopyWith(_$ChangeCarouselIndexImpl value,
-          $Res Function(_$ChangeCarouselIndexImpl) then) =
-      __$$ChangeCarouselIndexImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int index});
-}
-
-/// @nodoc
-class __$$ChangeCarouselIndexImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$ChangeCarouselIndexImpl>
-    implements _$$ChangeCarouselIndexImplCopyWith<$Res> {
-  __$$ChangeCarouselIndexImplCopyWithImpl(_$ChangeCarouselIndexImpl _value,
-      $Res Function(_$ChangeCarouselIndexImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? index = null,
-  }) {
-    return _then(_$ChangeCarouselIndexImpl(
-      null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ChangeCarouselIndexImpl implements ChangeCarouselIndex {
-  const _$ChangeCarouselIndexImpl(this.index);
-
-  @override
-  final int index;
-
-  @override
-  String toString() {
-    return 'HomeEvent.changeCarouselIndex(index: $index)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeCarouselIndexImpl &&
-            (identical(other.index, index) || other.index == index));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, index);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ChangeCarouselIndexImplCopyWith<_$ChangeCarouselIndexImpl> get copyWith =>
-      __$$ChangeCarouselIndexImplCopyWithImpl<_$ChangeCarouselIndexImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() homeBg,
-    required TResult Function() homeLatest,
-    required TResult Function(int index) changeCarouselIndex,
-  }) {
-    return changeCarouselIndex(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? homeBg,
-    TResult? Function()? homeLatest,
-    TResult? Function(int index)? changeCarouselIndex,
-  }) {
-    return changeCarouselIndex?.call(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? homeBg,
-    TResult Function()? homeLatest,
-    TResult Function(int index)? changeCarouselIndex,
-    required TResult orElse(),
-  }) {
-    if (changeCarouselIndex != null) {
-      return changeCarouselIndex(index);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(HomeBg value) homeBg,
-    required TResult Function(HomeLatest value) homeLatest,
-    required TResult Function(ChangeCarouselIndex value) changeCarouselIndex,
-  }) {
-    return changeCarouselIndex(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(HomeBg value)? homeBg,
-    TResult? Function(HomeLatest value)? homeLatest,
-    TResult? Function(ChangeCarouselIndex value)? changeCarouselIndex,
-  }) {
-    return changeCarouselIndex?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeBg value)? homeBg,
-    TResult Function(HomeLatest value)? homeLatest,
-    TResult Function(ChangeCarouselIndex value)? changeCarouselIndex,
-    required TResult orElse(),
-  }) {
-    if (changeCarouselIndex != null) {
-      return changeCarouselIndex(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ChangeCarouselIndex implements HomeEvent {
-  const factory ChangeCarouselIndex(final int index) =
-      _$ChangeCarouselIndexImpl;
-
-  int get index;
-  @JsonKey(ignore: true)
-  _$$ChangeCarouselIndexImplCopyWith<_$ChangeCarouselIndexImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

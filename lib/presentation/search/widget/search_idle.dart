@@ -41,7 +41,8 @@ class SearchIdle extends StatelessWidget {
                   itemCount: state.idleList.length);
             }
           }),
-        )
+        ),
+        kheight20
       ],
     );
   }
@@ -62,6 +63,7 @@ class TopSearchItemTile extends StatelessWidget {
           width: screenWidth * 0.35,
           height: screenHeight * 0.1,
           decoration: BoxDecoration(
+              borderRadius: kRadius15,
               image: DecorationImage(
                   fit: BoxFit.cover,
                   image: CachedNetworkImageProvider(imageUrl))),

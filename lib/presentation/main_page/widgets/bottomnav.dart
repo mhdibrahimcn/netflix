@@ -40,21 +40,21 @@ class BottomNavigationWidget extends StatelessWidget {
                     showUnselectedLabels: false,
                     items: [
                       BottomNavigationBarItem(
-                          backgroundColor: Colors.transparent,
+                          backgroundColor: Colors.black.withOpacity(0.03),
                           icon: Icon(
                             Icons.home,
                             size: iconSize,
                           ),
                           label: "Home"),
                       BottomNavigationBarItem(
-                          backgroundColor: Colors.transparent,
+                          backgroundColor: Colors.black.withOpacity(0.03),
                           icon: Icon(
                             Icons.collections,
                             size: iconSize,
                           ),
                           label: "New & Hot,  size: 15,"),
                       BottomNavigationBarItem(
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: Colors.black.withOpacity(0.03),
                         icon: Icon(
                           Icons.emoji_emotions,
                           size: iconSize,
@@ -62,14 +62,14 @@ class BottomNavigationWidget extends StatelessWidget {
                         label: "Fast Laughs",
                       ),
                       BottomNavigationBarItem(
-                          backgroundColor: Colors.transparent,
+                          backgroundColor: Colors.black.withOpacity(0.03),
                           icon: Icon(
                             Icons.search,
                             size: iconSize,
                           ),
                           label: "Search"),
                       BottomNavigationBarItem(
-                          backgroundColor: Colors.transparent,
+                          backgroundColor: Colors.black.withOpacity(0.03),
                           icon: Icon(
                             Icons.download,
                             size: iconSize,

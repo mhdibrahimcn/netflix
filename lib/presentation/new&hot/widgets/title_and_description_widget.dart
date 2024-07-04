@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/methods.dart';
 
 class TitleAndDescriptionWidget extends StatelessWidget {
   final String title, overview;
@@ -26,7 +27,7 @@ class TitleAndDescriptionWidget extends StatelessWidget {
           ),
         ),
         Text(
-          _getLimitedOverview(overview, sentenceLimit),
+          getLimitedOverview(overview, sentenceLimit),
           style: TextStyle(
             fontWeight: FontWeight.w900,
             color: Colors.grey[500],
@@ -35,13 +36,5 @@ class TitleAndDescriptionWidget extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String _getLimitedOverview(String text, int limit) {
-    final sentences = text.split(RegExp(r'(?<=[.!?])\s+'));
-    if (sentences.length <= limit) {
-      return text;
-    }
-    return sentences.take(limit).join(' ');
   }
 }

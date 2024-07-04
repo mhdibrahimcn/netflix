@@ -15,11 +15,19 @@ class MainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: size.width * 0.34,
-      height: size.height * 0.24,
+      height: size.width * 0.2,
       decoration: BoxDecoration(
-          borderRadius: kRadius,
-          image: DecorationImage(
-              fit: BoxFit.cover, image: CachedNetworkImageProvider(posterUrl))),
+        borderRadius: kRadius,
+        color: posterUrl == null ? Colors.grey : null,
+        image: posterUrl != null
+            ? DecorationImage(
+                fit: BoxFit.cover,
+                image: CachedNetworkImageProvider(
+                  posterUrl,
+                ),
+              )
+            : null,
+      ),
     );
   }
 }

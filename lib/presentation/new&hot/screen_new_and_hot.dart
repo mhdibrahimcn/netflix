@@ -10,6 +10,7 @@ import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/new&hot/widgets/everyoes_watching_card.dart';
 import 'package:netflix/presentation/new&hot/widgets/news_and_hot_card.dart';
 import 'package:netflix/presentation/widgets/app_bar_widget.dart';
+import 'package:netflix/presentation/widgets/bulid_no_connection_state.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -115,8 +116,8 @@ class ScreenNewAndHot extends StatelessWidget {
             ),
           );
         } else if (state.isError) {
-          return const Center(
-            child: Text('Failed to load data'),
+          return Center(
+            child: buildNoConnectionState(context),
           );
         } else {
           return Container();
@@ -164,8 +165,8 @@ class ScreenNewAndHot extends StatelessWidget {
             ),
           );
         } else if (state.isError) {
-          return const Center(
-            child: Text('Failed to load data'),
+          return Center(
+            child: buildNoConnectionState(context),
           );
         } else {
           return Container();

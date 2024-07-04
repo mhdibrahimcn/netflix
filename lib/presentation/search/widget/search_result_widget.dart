@@ -57,6 +57,9 @@ class SearchResultWidget extends StatelessWidget {
                             "$imageAppendUrl${validResults[index].posterPath}",
                         movieTitle: validResults[index].title!,
                         genreIds: validResults[index].genreIds!,
+                        overview: validResults[index].overview!,
+                        rating: validResults[index].voteAverage!,
+                        language: validResults[index].originalLanguage!,
                       );
                     }),
                   );

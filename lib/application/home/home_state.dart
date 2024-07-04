@@ -13,7 +13,7 @@ class HomeState with _$HomeState {
     required int currentIndex,
   }) = _HomeState;
   factory HomeState.initial() => const HomeState(
-        isLoading: false,
+        isLoading: true,
         isError: false,
         homeResultList: [],
         homeLatestList: [],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
@@ -139,7 +140,7 @@ class Section2 extends StatelessWidget {
                 ],
               );
             } else {
-              return const Text('No downloads available.');
+              return const Text('No Internet available.');
             }
           },
         ),
@@ -179,7 +180,25 @@ class Section3 extends StatelessWidget {
         ),
         kheight,
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.snackbar(
+              'Hello',
+              'This is a SnackBar using GetX!',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.black,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              mainButton: TextButton(
+                onPressed: () {
+                  // Code to execute when the action button is pressed
+                },
+                child: const Text(
+                  'Undo',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            );
+          },
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           color: kButtonColorWhite,
           child: const Padding(
