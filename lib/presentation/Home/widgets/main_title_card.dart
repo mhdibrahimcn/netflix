@@ -4,17 +4,17 @@ import 'package:netflix/presentation/widgets/main_title.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MainTitleCard extends StatelessWidget {
-  const MainTitleCard({
-    super.key,
-    required this.title,
-    required this.posterMovieList,
-    required this.isLoading,
-  });
+  const MainTitleCard(
+      {super.key,
+      required this.title,
+      required this.posterMovieList,
+      required this.isLoading,
+      required this.movieId});
 
   final List<String> posterMovieList;
   final String title;
   final bool isLoading;
-
+  final List<int?> movieId;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -95,12 +95,14 @@ class MainTitleCard extends StatelessWidget {
               child: MainCard(
                 size: size,
                 posterUrl: posterMovieList[index],
+                movieId: movieId[index]!,
               ),
             );
           },
           child: MainCard(
             size: size,
             posterUrl: posterMovieList[index],
+            movieId: movieId[index]!,
           ),
         );
       },

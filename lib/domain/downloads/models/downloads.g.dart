@@ -12,6 +12,7 @@ _$DownloadsImpl _$$DownloadsImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       name: json['name'] as String?,
       backdropPath: json['backdrop_path'] as String?,
+      id: (json['id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DownloadsImplToJson(_$DownloadsImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$DownloadsImplToJson(_$DownloadsImpl instance) =>
       'title': instance.title,
       'name': instance.name,
       'backdrop_path': instance.backdropPath,
+      'id': instance.id,
     };

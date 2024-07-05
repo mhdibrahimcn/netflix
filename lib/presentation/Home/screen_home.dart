@@ -19,7 +19,7 @@ class ScreenHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final paletteController = Get.put(PaletteController());
     final connectivityService = Get.find<ConnectivityService>();
-    bool flag = false;
+
     // Initialize data loading when the screen is first built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeLatest());
@@ -33,102 +33,103 @@ class ScreenHome extends StatelessWidget {
     ));
 
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        body: RefreshIndicator(onRefresh: () async {
+      extendBodyBehindAppBar: true,
+      body: RefreshIndicator(
+        onRefresh: () async {
           BlocProvider.of<HomeBloc>(context).add(const HomeEvent.homeLatest());
-        }, child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-          // Cache frequently used values
+        },
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            final homeResultList = state.homeResultList;
+            final releasedPastYear = state.homeLatestList;
+            final trendingList = state.homeTrendingList;
+            final tvShowList = state.homeTvShowList;
+            final dramaList = state.homeDramaGenreList;
 
-          final homeResultList = state.homeResultList
-              .map((m) => '$imageAppendUrl${m.posterPath}')
-              .toList();
-          final releasedPastYear = state.homeLatestList
-              .map((m) => '$imageAppendUrl${m.posterPath}')
-              .toList();
-          final trendingList = state.homeTrendingList
-              .map((m) => '$imageAppendUrl${m.posterPath}')
-              .toList();
-          final tvShowList = state.homeTvShowList
-              .map((m) => '$imageAppendUrl${m.posterPath}')
-              .toList();
-          final dramaList = state.homeDramaGenreList
-              .map((m) => '$imageAppendUrl${m.posterPath}')
-              .toList();
-
-          return Obx(() {
-            // Check connectivity status and show appropriate UI
-            if (connectivityService.isConnected.value &
-                (homeResultList.isEmpty || releasedPastYear.isEmpty)) {
-              flag = true;
-              return buildNoConnectionState(context);
-            } else {
-              if (flag) {
-                BlocProvider.of<HomeBloc>(context)
-                    .add(const HomeEvent.homeLatest());
-                flag = false;
-              }
-              return Stack(
-                children: [
-                  Obx(() {
-                    final sideColors = paletteController.sideColors;
-                    final endColor = sideColors.length > 1
-                        ? sideColors[1]
-                        : Colors.transparent;
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 600),
-                      curve: Curves.easeInOut,
-                      width: double.infinity,
-                      decoration: BoxDecoration(color: endColor),
-                    );
-                  }),
-                  ScrollablePositionedList.builder(
-                    itemCount:
-                        6, // Adjust according to the number of items in the list
-                    itemBuilder: (context, index) {
-                      switch (index) {
-                        case 0:
-                          return BackgroundCard(
-                            isLoading: state.isLoading,
-                            isError: state.isError,
-                            homeResultList: homeResultList,
-                          );
-                        case 1:
-                          return MainTitleCard(
-                            title: 'Released In Past Year',
-                            posterMovieList: releasedPastYear,
-                            isLoading: state.isLoading,
-                          );
-                        case 2:
-                          return MainTitleCard(
-                            title: 'Trending Now',
-                            posterMovieList: trendingList,
-                            isLoading: state.isLoading,
-                          );
-                        case 3:
-                          if (tvShowList.isNotEmpty) {
-                            return NumberTitleCard(
-                              posterList: tvShowList,
+            return Obx(() {
+              if (connectivityService.isConnected.value &&
+                  (homeResultList.isEmpty || releasedPastYear.isEmpty)) {
+                return buildNoConnectionState(context);
+              } else {
+                return Stack(
+                  children: [
+                    Obx(() {
+                      final sideColors = paletteController.sideColors;
+                      final endColor = sideColors.length > 1
+                          ? sideColors[1]
+                          : Colors.transparent;
+                      return AnimatedContainer(
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeInOut,
+                        width: double.infinity,
+                        decoration: BoxDecoration(color: endColor),
+                      );
+                    }),
+                    ScrollablePositionedList.builder(
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        switch (index) {
+                          case 0:
+                            return BackgroundCard(
                               isLoading: state.isLoading,
+                              isError: state.isError,
+                              homeResultList: homeResultList
+                                  .map((m) => '$imageAppendUrl${m.posterPath}')
+                                  .toList(),
                             );
-                          }
-                          return Container();
-                        case 4:
-                          return MainTitleCard(
-                            title: 'Tense Drama',
-                            posterMovieList: dramaList,
-                            isLoading: state.isLoading,
-                          );
-                        case 5:
-                          return const SizedBox(height: 60);
-                        default:
-                          return Container();
-                      }
-                    },
-                  ),
-                ],
-              );
-            }
-          });
-        })));
+                          case 1:
+                            return MainTitleCard(
+                              title: 'Released In Past Year',
+                              posterMovieList: releasedPastYear
+                                  .map((m) => '$imageAppendUrl${m.posterPath}')
+                                  .toList(),
+                              isLoading: state.isLoading,
+                              movieId:
+                                  releasedPastYear.map((m) => m.id).toList(),
+                            );
+                          case 2:
+                            return MainTitleCard(
+                              title: 'Trending Now',
+                              posterMovieList: trendingList
+                                  .map((m) => '$imageAppendUrl${m.posterPath}')
+                                  .toList(),
+                              isLoading: state.isLoading,
+                              movieId: trendingList.map((m) => m.id).toList(),
+                            );
+                          case 3:
+                            if (tvShowList.isNotEmpty) {
+                              return NumberTitleCard(
+                                posterList: tvShowList
+                                    .map(
+                                        (m) => '$imageAppendUrl${m.posterPath}')
+                                    .toList(),
+                                isLoading: state.isLoading,
+                              );
+                            }
+                            return Container();
+                          case 4:
+                            return MainTitleCard(
+                              title: 'Tense Drama',
+                              posterMovieList: dramaList
+                                  .map((m) => '$imageAppendUrl${m.posterPath}')
+                                  .toList(),
+                              isLoading: state.isLoading,
+                              movieId: dramaList.map((m) => m.id).toList(),
+                            );
+                          case 5:
+                            return const SizedBox(height: 60);
+                          default:
+                            return Container();
+                        }
+                      },
+                    ),
+                  ],
+                );
+              }
+            });
+          },
+        ),
+      ),
+    );
   }
 }

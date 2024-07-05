@@ -12,4 +12,5 @@ class ApiEndPoints {
 
   static const upcomingMovies = "$kBaseUrl/movie/upcoming?api_key=$apiKey";
   static const everyoneWatching = "$kBaseUrl/trending/tv/week?api_key=$apiKey";
+  static const movieInfoPage = '$kBaseUrl/movie/';
 }

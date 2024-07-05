@@ -115,7 +115,7 @@ class ScreenNewAndHot extends StatelessWidget {
               },
             ),
           );
-        } else if (state.isError) {
+        } else if (state.isError && state.upcomingMovieList.isEmpty) {
           return Center(
             child: buildNoConnectionState(context),
           );
@@ -164,7 +164,7 @@ class ScreenNewAndHot extends StatelessWidget {
               },
             ),
           );
-        } else if (state.isError) {
+        } else if (state.isError & state.everyoneWatchingList.isEmpty) {
           return Center(
             child: buildNoConnectionState(context),
           );

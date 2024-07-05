@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'downloads.freezed.dart';
 part 'downloads.g.dart';
 
@@ -9,6 +10,7 @@ class Downloads with _$Downloads {
     @JsonKey(name: 'title') required String? title,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'backdrop_path') required String? backdropPath,
+    @JsonKey(name: 'id') required int? id,
   }) = _Downloads;
 
   factory Downloads.fromJson(Map<String, dynamic> json) =>
