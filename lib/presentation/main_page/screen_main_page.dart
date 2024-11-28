@@ -49,7 +49,7 @@ class ScreenMainPage extends StatelessWidget {
           const Positioned(
             left: 0,
             right: 0,
-            bottom: 3, // Adjust to move it up or down as desired
+            bottom: 5, // Adjust to move it up or down as desired
             child: BottomNavigationWidget(),
           ),
         ]),

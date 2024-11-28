@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix/domain/core/faliures/main_failure.dart';
 import 'package:netflix/domain/movie_info/models/movie_info_model/movie_info_model.dart';
+import 'package:netflix/domain/movie_info/models/movie_video_model/movie_video_model.dart';
 import 'package:netflix/domain/movie_info/movie_info_service.dart';
 
 part 'movie_info_bloc.freezed.dart';
@@ -35,6 +36,29 @@ class MovieInfoBloc extends Bloc<MovieInfoEvent, MovieInfoState> {
           isLoading: false,
           isError: false,
           movieInfo: movieInfo,
+        ),
+      ));
+    });
+    on<GetMovieVideoLink>((event, emit) async {
+      //initializing
+      emit(state.copyWith(
+        isLoading: true,
+        isError: false,
+        youtubeVideoId: [],
+      ));
+      final movieVideoLinkModel =
+          await _movieInfoService.getMovieVideoLink(event.movieId);
+      log(movieVideoLinkModel.toString());
+      emit(movieVideoLinkModel.fold(
+        (MainFailure failure) => state.copyWith(
+          isLoading: false,
+          isError: true,
+          youtubeVideoId: [],
+        ),
+        (MovieVideoModel movieInfo) => state.copyWith(
+          isLoading: false,
+          isError: false,
+          youtubeVideoId: movieInfo.results,
         ),
       ));
     });

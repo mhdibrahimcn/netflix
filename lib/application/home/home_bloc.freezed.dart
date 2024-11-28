@@ -18,38 +18,32 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() homeBg,
     required TResult Function() homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? homeBg,
     TResult? Function()? homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? homeBg,
     TResult Function()? homeLatest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(HomeBg value) homeBg,
     required TResult Function(HomeLatest value) homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(HomeBg value)? homeBg,
     TResult? Function(HomeLatest value)? homeLatest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeBg value)? homeBg,
     TResult Function(HomeLatest value)? homeLatest,
     required TResult orElse(),
   }) =>
@@ -71,108 +65,6 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$HomeBgImplCopyWith<$Res> {
-  factory _$$HomeBgImplCopyWith(
-          _$HomeBgImpl value, $Res Function(_$HomeBgImpl) then) =
-      __$$HomeBgImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$HomeBgImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$HomeBgImpl>
-    implements _$$HomeBgImplCopyWith<$Res> {
-  __$$HomeBgImplCopyWithImpl(
-      _$HomeBgImpl _value, $Res Function(_$HomeBgImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$HomeBgImpl implements HomeBg {
-  const _$HomeBgImpl();
-
-  @override
-  String toString() {
-    return 'HomeEvent.homeBg()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$HomeBgImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() homeBg,
-    required TResult Function() homeLatest,
-  }) {
-    return homeBg();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? homeBg,
-    TResult? Function()? homeLatest,
-  }) {
-    return homeBg?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? homeBg,
-    TResult Function()? homeLatest,
-    required TResult orElse(),
-  }) {
-    if (homeBg != null) {
-      return homeBg();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(HomeBg value) homeBg,
-    required TResult Function(HomeLatest value) homeLatest,
-  }) {
-    return homeBg(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(HomeBg value)? homeBg,
-    TResult? Function(HomeLatest value)? homeLatest,
-  }) {
-    return homeBg?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeBg value)? homeBg,
-    TResult Function(HomeLatest value)? homeLatest,
-    required TResult orElse(),
-  }) {
-    if (homeBg != null) {
-      return homeBg(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class HomeBg implements HomeEvent {
-  const factory HomeBg() = _$HomeBgImpl;
 }
 
 /// @nodoc
@@ -213,7 +105,6 @@ class _$HomeLatestImpl implements HomeLatest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() homeBg,
     required TResult Function() homeLatest,
   }) {
     return homeLatest();
@@ -222,7 +113,6 @@ class _$HomeLatestImpl implements HomeLatest {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? homeBg,
     TResult? Function()? homeLatest,
   }) {
     return homeLatest?.call();
@@ -231,7 +121,6 @@ class _$HomeLatestImpl implements HomeLatest {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? homeBg,
     TResult Function()? homeLatest,
     required TResult orElse(),
   }) {
@@ -244,7 +133,6 @@ class _$HomeLatestImpl implements HomeLatest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(HomeBg value) homeBg,
     required TResult Function(HomeLatest value) homeLatest,
   }) {
     return homeLatest(this);
@@ -253,7 +141,6 @@ class _$HomeLatestImpl implements HomeLatest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(HomeBg value)? homeBg,
     TResult? Function(HomeLatest value)? homeLatest,
   }) {
     return homeLatest?.call(this);
@@ -262,7 +149,6 @@ class _$HomeLatestImpl implements HomeLatest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeBg value)? homeBg,
     TResult Function(HomeLatest value)? homeLatest,
     required TResult orElse(),
   }) {

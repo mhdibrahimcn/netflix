@@ -20,32 +20,38 @@ mixin _$MovieInfoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int movieId) getMovieInfo,
+    required TResult Function(int movieId) getMovieVideoLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int movieId)? getMovieInfo,
+    TResult? Function(int movieId)? getMovieVideoLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int movieId)? getMovieInfo,
+    TResult Function(int movieId)? getMovieVideoLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetMovieInfo value) getMovieInfo,
+    required TResult Function(GetMovieVideoLink value) getMovieVideoLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetMovieInfo value)? getMovieInfo,
+    TResult? Function(GetMovieVideoLink value)? getMovieVideoLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetMovieInfo value)? getMovieInfo,
+    TResult Function(GetMovieVideoLink value)? getMovieVideoLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$GetMovieInfoImpl implements GetMovieInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int movieId) getMovieInfo,
+    required TResult Function(int movieId) getMovieVideoLink,
   }) {
     return getMovieInfo(movieId);
   }
@@ -163,6 +170,7 @@ class _$GetMovieInfoImpl implements GetMovieInfo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int movieId)? getMovieInfo,
+    TResult? Function(int movieId)? getMovieVideoLink,
   }) {
     return getMovieInfo?.call(movieId);
   }
@@ -171,6 +179,7 @@ class _$GetMovieInfoImpl implements GetMovieInfo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int movieId)? getMovieInfo,
+    TResult Function(int movieId)? getMovieVideoLink,
     required TResult orElse(),
   }) {
     if (getMovieInfo != null) {
@@ -183,6 +192,7 @@ class _$GetMovieInfoImpl implements GetMovieInfo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetMovieInfo value) getMovieInfo,
+    required TResult Function(GetMovieVideoLink value) getMovieVideoLink,
   }) {
     return getMovieInfo(this);
   }
@@ -191,6 +201,7 @@ class _$GetMovieInfoImpl implements GetMovieInfo {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetMovieInfo value)? getMovieInfo,
+    TResult? Function(GetMovieVideoLink value)? getMovieVideoLink,
   }) {
     return getMovieInfo?.call(this);
   }
@@ -199,6 +210,7 @@ class _$GetMovieInfoImpl implements GetMovieInfo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetMovieInfo value)? getMovieInfo,
+    TResult Function(GetMovieVideoLink value)? getMovieVideoLink,
     required TResult orElse(),
   }) {
     if (getMovieInfo != null) {
@@ -220,10 +232,150 @@ abstract class GetMovieInfo implements MovieInfoEvent {
 }
 
 /// @nodoc
+abstract class _$$GetMovieVideoLinkImplCopyWith<$Res>
+    implements $MovieInfoEventCopyWith<$Res> {
+  factory _$$GetMovieVideoLinkImplCopyWith(_$GetMovieVideoLinkImpl value,
+          $Res Function(_$GetMovieVideoLinkImpl) then) =
+      __$$GetMovieVideoLinkImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int movieId});
+}
+
+/// @nodoc
+class __$$GetMovieVideoLinkImplCopyWithImpl<$Res>
+    extends _$MovieInfoEventCopyWithImpl<$Res, _$GetMovieVideoLinkImpl>
+    implements _$$GetMovieVideoLinkImplCopyWith<$Res> {
+  __$$GetMovieVideoLinkImplCopyWithImpl(_$GetMovieVideoLinkImpl _value,
+      $Res Function(_$GetMovieVideoLinkImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movieId = null,
+  }) {
+    return _then(_$GetMovieVideoLinkImpl(
+      null == movieId
+          ? _value.movieId
+          : movieId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetMovieVideoLinkImpl implements GetMovieVideoLink {
+  const _$GetMovieVideoLinkImpl(this.movieId);
+
+  @override
+  final int movieId;
+
+  @override
+  String toString() {
+    return 'MovieInfoEvent.getMovieVideoLink(movieId: $movieId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetMovieVideoLinkImpl &&
+            (identical(other.movieId, movieId) || other.movieId == movieId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, movieId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetMovieVideoLinkImplCopyWith<_$GetMovieVideoLinkImpl> get copyWith =>
+      __$$GetMovieVideoLinkImplCopyWithImpl<_$GetMovieVideoLinkImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int movieId) getMovieInfo,
+    required TResult Function(int movieId) getMovieVideoLink,
+  }) {
+    return getMovieVideoLink(movieId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int movieId)? getMovieInfo,
+    TResult? Function(int movieId)? getMovieVideoLink,
+  }) {
+    return getMovieVideoLink?.call(movieId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int movieId)? getMovieInfo,
+    TResult Function(int movieId)? getMovieVideoLink,
+    required TResult orElse(),
+  }) {
+    if (getMovieVideoLink != null) {
+      return getMovieVideoLink(movieId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetMovieInfo value) getMovieInfo,
+    required TResult Function(GetMovieVideoLink value) getMovieVideoLink,
+  }) {
+    return getMovieVideoLink(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetMovieInfo value)? getMovieInfo,
+    TResult? Function(GetMovieVideoLink value)? getMovieVideoLink,
+  }) {
+    return getMovieVideoLink?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetMovieInfo value)? getMovieInfo,
+    TResult Function(GetMovieVideoLink value)? getMovieVideoLink,
+    required TResult orElse(),
+  }) {
+    if (getMovieVideoLink != null) {
+      return getMovieVideoLink(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMovieVideoLink implements MovieInfoEvent {
+  const factory GetMovieVideoLink(final int movieId) = _$GetMovieVideoLinkImpl;
+
+  @override
+  int get movieId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetMovieVideoLinkImplCopyWith<_$GetMovieVideoLinkImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$MovieInfoState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   MovieInfoModel? get movieInfo => throw _privateConstructorUsedError;
+  List<MovieVideoResultLink> get youtubeVideoId =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MovieInfoStateCopyWith<MovieInfoState> get copyWith =>
@@ -236,7 +388,11 @@ abstract class $MovieInfoStateCopyWith<$Res> {
           MovieInfoState value, $Res Function(MovieInfoState) then) =
       _$MovieInfoStateCopyWithImpl<$Res, MovieInfoState>;
   @useResult
-  $Res call({bool isLoading, bool isError, MovieInfoModel? movieInfo});
+  $Res call(
+      {bool isLoading,
+      bool isError,
+      MovieInfoModel? movieInfo,
+      List<MovieVideoResultLink> youtubeVideoId});
 }
 
 /// @nodoc
@@ -255,6 +411,7 @@ class _$MovieInfoStateCopyWithImpl<$Res, $Val extends MovieInfoState>
     Object? isLoading = null,
     Object? isError = null,
     Object? movieInfo = freezed,
+    Object? youtubeVideoId = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -269,6 +426,10 @@ class _$MovieInfoStateCopyWithImpl<$Res, $Val extends MovieInfoState>
           ? _value.movieInfo
           : movieInfo // ignore: cast_nullable_to_non_nullable
               as MovieInfoModel?,
+      youtubeVideoId: null == youtubeVideoId
+          ? _value.youtubeVideoId
+          : youtubeVideoId // ignore: cast_nullable_to_non_nullable
+              as List<MovieVideoResultLink>,
     ) as $Val);
   }
 }
@@ -281,7 +442,11 @@ abstract class _$$MovieInfoStateImplCopyWith<$Res>
       __$$MovieInfoStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, bool isError, MovieInfoModel? movieInfo});
+  $Res call(
+      {bool isLoading,
+      bool isError,
+      MovieInfoModel? movieInfo,
+      List<MovieVideoResultLink> youtubeVideoId});
 }
 
 /// @nodoc
@@ -298,6 +463,7 @@ class __$$MovieInfoStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? isError = null,
     Object? movieInfo = freezed,
+    Object? youtubeVideoId = null,
   }) {
     return _then(_$MovieInfoStateImpl(
       isLoading: null == isLoading
@@ -312,6 +478,10 @@ class __$$MovieInfoStateImplCopyWithImpl<$Res>
           ? _value.movieInfo
           : movieInfo // ignore: cast_nullable_to_non_nullable
               as MovieInfoModel?,
+      youtubeVideoId: null == youtubeVideoId
+          ? _value._youtubeVideoId
+          : youtubeVideoId // ignore: cast_nullable_to_non_nullable
+              as List<MovieVideoResultLink>,
     ));
   }
 }
@@ -322,7 +492,9 @@ class _$MovieInfoStateImpl implements _MovieInfoState {
   const _$MovieInfoStateImpl(
       {required this.isLoading,
       required this.isError,
-      required this.movieInfo});
+      required this.movieInfo,
+      required final List<MovieVideoResultLink> youtubeVideoId})
+      : _youtubeVideoId = youtubeVideoId;
 
   @override
   final bool isLoading;
@@ -330,10 +502,17 @@ class _$MovieInfoStateImpl implements _MovieInfoState {
   final bool isError;
   @override
   final MovieInfoModel? movieInfo;
+  final List<MovieVideoResultLink> _youtubeVideoId;
+  @override
+  List<MovieVideoResultLink> get youtubeVideoId {
+    if (_youtubeVideoId is EqualUnmodifiableListView) return _youtubeVideoId;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_youtubeVideoId);
+  }
 
   @override
   String toString() {
-    return 'MovieInfoState(isLoading: $isLoading, isError: $isError, movieInfo: $movieInfo)';
+    return 'MovieInfoState(isLoading: $isLoading, isError: $isError, movieInfo: $movieInfo, youtubeVideoId: $youtubeVideoId)';
   }
 
   @override
@@ -345,11 +524,14 @@ class _$MovieInfoStateImpl implements _MovieInfoState {
                 other.isLoading == isLoading) &&
             (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.movieInfo, movieInfo) ||
-                other.movieInfo == movieInfo));
+                other.movieInfo == movieInfo) &&
+            const DeepCollectionEquality()
+                .equals(other._youtubeVideoId, _youtubeVideoId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isError, movieInfo);
+  int get hashCode => Object.hash(runtimeType, isLoading, isError, movieInfo,
+      const DeepCollectionEquality().hash(_youtubeVideoId));
 
   @JsonKey(ignore: true)
   @override
@@ -361,9 +543,11 @@ class _$MovieInfoStateImpl implements _MovieInfoState {
 
 abstract class _MovieInfoState implements MovieInfoState {
   const factory _MovieInfoState(
-      {required final bool isLoading,
-      required final bool isError,
-      required final MovieInfoModel? movieInfo}) = _$MovieInfoStateImpl;
+          {required final bool isLoading,
+          required final bool isError,
+          required final MovieInfoModel? movieInfo,
+          required final List<MovieVideoResultLink> youtubeVideoId}) =
+      _$MovieInfoStateImpl;
 
   @override
   bool get isLoading;
@@ -371,6 +555,8 @@ abstract class _MovieInfoState implements MovieInfoState {
   bool get isError;
   @override
   MovieInfoModel? get movieInfo;
+  @override
+  List<MovieVideoResultLink> get youtubeVideoId;
   @override
   @JsonKey(ignore: true)
   _$$MovieInfoStateImplCopyWith<_$MovieInfoStateImpl> get copyWith =>

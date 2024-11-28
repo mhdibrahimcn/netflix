@@ -28,7 +28,7 @@ class MainTitleCard extends StatelessWidget {
           MainTitle(title: title),
           const SizedBox(height: 10),
           LimitedBox(
-            maxHeight: size.height * 0.24,
+            maxHeight: size.width * 0.53,
             child: isLoading
                 ? _buildLoadingList(size)
                 : _buildPosterList(size, scrollController),
